@@ -62,7 +62,16 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
             product.image.startsWith("/") ? product.image : `/${product.image}`
           }`,
         ]
+      : product.mainImage
+      ? [
+          `${baseURL}/uploads${
+            product.mainImage.startsWith("/")
+              ? product.mainImage
+              : `/${product.mainImage}`
+          }`,
+        ]
       : []);
+
   console.log(productImages);
 
   const localPrice = product.price * selectedCountry.rate;

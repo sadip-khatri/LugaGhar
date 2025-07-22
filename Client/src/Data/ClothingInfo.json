@@ -5,7 +5,7 @@
     "price": 1799,
     "size": ["S", "M", "L", "XL"],
     "color": "#ffffff",
-    "mainImage": "/images/mens/mshirt1.jpg",
+    "mainImage": "/formal-white-shirt.jpg",  
     "thumbnails": ["/images/mens/mshirt1_thumb1.jpg", "/images/mens/mshirt1_thumb2.jpg"],
     "category": "M-Shirts",
     "stock": 40
@@ -16,7 +16,7 @@
     "price": 1599,
     "size": ["M", "L", "XL"],
     "color": "#b22222",
-    "mainImage": "/images/mens/mshirt2.jpg",
+    "mainImage": "/casual-checked-red-shirt.jpg",
     "thumbnails": ["/images/mens/mshirt2_thumb1.jpg", "/images/mens/mshirt2_thumb2.jpg"],
     "category": "M-Shirts",
     "stock": 30
@@ -27,7 +27,7 @@
     "price": 1899,
     "size": ["S", "M", "L", "XL"],
     "color": "#1e4d8f",
-    "mainImage": "/images/mens/mshirt3.jpg",
+    "mainImage": "/blue-denim-shirt.jpg",
     "thumbnails": ["/images/mens/mshirt3_thumb1.jpg", "/images/mens/mshirt3_thumb2.jpg"],
     "category": "M-Shirts",
     "stock": 25
@@ -38,7 +38,7 @@
     "price": 2199,
     "size": ["30", "32", "34", "36"],
     "color": "#000080",
-    "mainImage": "/images/mens/mpants1.jpg",
+    "mainImage": "/slim-fit-navy-blue-pants.jpg",
     "thumbnails": ["/images/mens/mpants1_thumb1.jpg", "/images/mens/mpants1_thumb2.jpg"],
     "category": "M-Pants",
     "stock": 35
@@ -49,7 +49,7 @@
     "price": 1999,
     "size": ["30", "32", "34", "36"],
     "color": "#808080",
-    "mainImage": "/images/mens/mpants2.jpg",
+    "mainImage": "classic-grey-formal-trousers.png",
     "thumbnails": ["/images/mens/mpants2_thumb1.jpg", "/images/mens/mpants2_thumb2.jpg"],
     "category": "M-Pants",
     "stock": 20
@@ -60,7 +60,7 @@
     "price": 1899,
     "size": ["30", "32", "34", "36"],
     "color": "#c3b091",
-    "mainImage": "/images/mens/mpants3.jpg",
+    "mainImage": "/khaki-pants.jpg",
     "thumbnails": ["/images/mens/mpants3_thumb1.jpg", "/images/mens/mpants3_thumb2.jpg"],
     "category": "M-Pants",
     "stock": 22
@@ -71,7 +71,7 @@
     "price": 4999,
     "size": ["M", "L", "XL"],
     "color": "#000000",
-    "mainImage": "/images/mens/mblazer1.jpg",
+    "mainImage": "/blazer.jpg",
     "thumbnails": ["/images/mens/mblazer1_thumb1.jpg", "/images/mens/mblazer1_thumb2.jpg"],
     "category": "M-Blazers",
     "stock": 15
@@ -82,7 +82,7 @@
     "price": 5299,
     "size": ["M", "L", "XL"],
     "color": "#1a3d7c",
-    "mainImage": "/images/mens/mblazer2.jpg",
+    "mainImage": "/blue-checkred-blazer.jpg",
     "thumbnails": ["/images/mens/mblazer2_thumb1.jpg", "/images/mens/mblazer2_thumb2.jpg"],
     "category": "M-Blazers",
     "stock": 12
@@ -93,7 +93,7 @@
     "price": 5799,
     "size": ["M", "L", "XL"],
     "color": "#a9a9a9",
-    "mainImage": "/images/mens/mblazer3.jpg",
+    "mainImage": "/grey-tweed-blazer.jpg",
     "thumbnails": ["/images/mens/mblazer3_thumb1.jpg", "/images/mens/mblazer3_thumb2.jpg"],
     "category": "M-Blazers",
     "stock": 10
@@ -104,7 +104,7 @@
     "price": 1699,
     "size": ["S", "M", "L", "XL"],
     "color": "#f5f5dc",
-    "mainImage": "/images/mens/mshirt4.jpg",
+    "mainImage": "/cream-linen-shirt.jpg",
     "thumbnails": ["/images/mens/mshirt4_thumb1.jpg", "/images/mens/mshirt4_thumb2.jpg"],
     "category": "M-Shirts",
     "stock": 28
@@ -115,7 +115,7 @@
     "price": 2499,
     "size": ["S", "M", "L"],
     "color": "#000000",
-    "mainImage": "/images/womens/bodycon1.jpg",
+    "mainImage": "/black-sleeveless-bodycon.jpg",
     "thumbnails": ["/images/womens/bodycon1_thumb1.jpg", "/images/womens/bodycon1_thumb2.jpg"],
     "category": "Bodycon",
     "stock": 20
@@ -126,7 +126,7 @@
     "price": 2699,
     "size": ["M", "L", "XL"],
     "color": "#800000",
-    "mainImage": "/images/womens/bodycon2.jpg",
+    "mainImage": "/maroon-velvet-bodycon.jpg",
     "thumbnails": ["/images/womens/bodycon2_thumb1.jpg", "/images/womens/bodycon2_thumb2.jpg"],
     "category": "Bodycon",
     "stock": 18
@@ -137,7 +137,7 @@
     "price": 9999,
     "size": ["M", "L", "XL"],
     "color": "#b22222",
-    "mainImage": "/images/womens/lehenga1.jpg",
+    "mainImage": "/traditional-red-bridal-lehenga.jpg",
     "thumbnails": ["/images/womens/lehenga1_thumb1.jpg", "/images/womens/lehenga1_thumb2.jpg"],
     "category": "Lehenga",
     "stock": 10
@@ -148,7 +148,7 @@
     "price": 8499,
     "size": ["M", "L"],
     "color": "#ff69b4",
-    "mainImage": "/images/womens/lehenga2.jpg",
+    "mainImage": "/pink-embroidered-lehenga.jpg",
     "thumbnails": ["/images/womens/lehenga2_thumb1.jpg", "/images/womens/lehenga2_thumb2.jpg"],
     "category": "Lehenga",
     "stock": 12
@@ -159,7 +159,7 @@
     "price": 2999,
     "size": ["Free Size"],
     "color": "#ffff00",
-    "mainImage": "/images/womens/sari1.jpg",
+    "mainImage": "/yellow-georgette-sari.jpg",
     "thumbnails": ["/images/womens/sari1_thumb1.jpg", "/images/womens/sari1_thumb2.jpg"],
     "category": "Sari",
     "stock": 25
@@ -170,7 +170,7 @@
     "price": 3499,
     "size": ["Free Size"],
     "color": "#0000cd",
-    "mainImage": "/images/womens/sari2.jpg",
+    "mainImage": "/royal-blue-party-sari.jpg",
     "thumbnails": ["/images/womens/sari2_thumb1.jpg", "/images/womens/sari2_thumb2.jpg"],
     "category": "Sari",
     "stock": 15
@@ -181,7 +181,7 @@
     "price": 1099,
     "size": ["S", "M", "L", "XL"],
     "color": "#ffffff",
-    "mainImage": "/images/womens/top1.jpg",
+    "mainImage": "/white-puff-sleeve-crop-top.jpg",
     "thumbnails": ["/images/womens/top1_thumb1.jpg", "/images/womens/top1_thumb2.jpg"],
     "category": "Tops",
     "stock": 30
@@ -192,7 +192,7 @@
     "price": 999,
     "size": ["S", "M", "L"],
     "color": "#faebd7",
-    "mainImage": "/images/womens/top2.jpg",
+    "mainImage": "/printed-casual-cotton-top.jpg",
     "thumbnails": ["/images/womens/top2_thumb1.jpg", "/images/womens/top2_thumb2.jpg"],
     "category": "Tops",
     "stock": 28
@@ -203,7 +203,7 @@
     "price": 1499,
     "size": ["S", "M", "L"],
     "color": "#2f2f2f",
-    "mainImage": "/images/womens/miniskirt1.jpg",
+    "mainImage": "/black-faux-leather-miniskirt.jpg",
     "thumbnails": ["/images/womens/miniskirt1_thumb1.jpg", "/images/womens/miniskirt1_thumb2.jpg"],
     "category": "Miniskirt",
     "stock": 22
@@ -214,7 +214,7 @@
     "price": 1399,
     "size": ["S", "M", "L"],
     "color": "#dc143c",
-    "mainImage": "/images/womens/miniskirt2.jpg",
+    "mainImage": "/red-checked-pleated-miniskirt.jpg",
     "thumbnails": ["/images/womens/miniskirt2_thumb1.jpg", "/images/womens/miniskirt2_thumb2.jpg"],
     "category": "Miniskirt",
     "stock": 26
@@ -225,7 +225,7 @@
     "price": 1399,
     "size": ["S", "M", "L", "XL"],
     "color": "#87ceeb",
-    "mainImage": "/images/womens/wshirt3.jpg",
+    "mainImage": "/skyblue-cotton-formal-shirt.jpg",
     "thumbnails": ["/images/womens/wshirt3_thumb1.jpg", "/images/womens/wshirt3_thumb2.jpg"],
     "category": "W-Shirts",
     "stock": 30
@@ -236,7 +236,7 @@
     "price": 1299,
     "size": ["M", "L", "XL"],
     "color": "#ffdab9",
-    "mainImage": "/images/womens/wshirt4.jpg",
+    "mainImage": "/printed-casual-shirt.jpg",
     "thumbnails": ["/images/womens/wshirt4_thumb1.jpg", "/images/womens/wshirt4_thumb2.jpg"],
     "category": "W-Shirts",
     "stock": 22
@@ -247,7 +247,7 @@
     "price": 1899,
     "size": ["28", "30", "32", "34"],
     "color": "#a9a9a9",
-    "mainImage": "/images/womens/wpants4.jpg",
+    "mainImage": "/grey-high-waist-formal-pants.jpg",
     "thumbnails": ["/images/womens/wpants4_thumb1.jpg", "/images/womens/wpants4_thumb2.jpg"],
     "category": "W-Pants",
     "stock": 24
@@ -258,7 +258,7 @@
     "price": 1699,
     "size": ["S", "M", "L", "XL"],
     "color": "#a0522d",
-    "mainImage": "/images/womens/wpants5.jpg",
+    "mainImage": "/brown-cotton-tapered-trousers.jpg",
     "thumbnails": ["/images/womens/wpants5_thumb1.jpg", "/images/womens/wpants5_thumb2.jpg"],
     "category": "W-Pants",
     "stock": 18
@@ -269,7 +269,7 @@
     "price": 1499,
     "size": ["S", "M", "L"],
     "color": "#ffffff",
-    "mainImage": "/images/womens/wpants6.jpg",
+    "mainImage": "/white-wide-leg-palazzo-pants.jpg",
     "thumbnails": ["/images/womens/wpants6_thumb1.jpg", "/images/womens/wpants6_thumb2.jpg"],
     "category": "W-Pants",
     "stock": 26
@@ -304,7 +304,7 @@
     "price": 899,
     "size": ["Small", "Medium"],
     "color": "#ffd700",
-    "mainImage": "/images/jewelry/earrings1.jpg",
+    "mainImage": "/18k-gold-plated-hoop-earings.jpg",
     "thumbnails": ["/images/jewelry/earrings1_thumb1.jpg", "/images/jewelry/earrings1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 35
@@ -315,7 +315,7 @@
     "price": 499,
     "size": ["One Size"],
     "color": "#c0c0c0",
-    "mainImage": "/images/jewelry/earrings2.jpg",
+    "mainImage": "/silver-pearl-stud-earrings.jpg",
     "thumbnails": ["/images/jewelry/earrings2_thumb1.jpg", "/images/jewelry/earrings2_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 42
@@ -326,7 +326,7 @@
     "price": 1499,
     "size": ["Adjustable"],
     "color": "#b76e79",
-    "mainImage": "/images/jewelry/necklace1.jpg",
+    "mainImage": "/rose-gold-layered-necklace.jpg",
     "thumbnails": ["/images/jewelry/necklace1_thumb1.jpg", "/images/jewelry/necklace1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 28
@@ -337,7 +337,7 @@
     "price": 1299,
     "size": ["One Size"],
     "color": "#778899",
-    "mainImage": "/images/jewelry/choker1.jpg",
+    "mainImage": "/oxidized-silver-choker-set.jpg",
     "thumbnails": ["/images/jewelry/choker1_thumb1.jpg", "/images/jewelry/choker1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 20
@@ -348,7 +348,7 @@
     "price": 699,
     "size": ["S", "M", "L"],
     "color": "#daa520",
-    "mainImage": "/images/jewelry/bracelet1.jpg",
+    "mainImage": "/gold-plated-chain-bracelet.jpg",
     "thumbnails": ["/images/jewelry/bracelet1_thumb1.jpg", "/images/jewelry/bracelet1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 38
@@ -359,7 +359,7 @@
     "price": 1999,
     "size": ["Adjustable"],
     "color": "#50c878",
-    "mainImage": "/images/jewelry/necklace2.jpg",
+    "mainImage": "/emerald-pendant-necklace.jpg",
     "thumbnails": ["/images/jewelry/necklace2_thumb1.jpg", "/images/jewelry/necklace2_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 16
@@ -370,7 +370,7 @@
     "price": 799,
     "size": ["One Size"],
     "color": "#d4af37",
-    "mainImage": "/images/jewelry/maangtikka1.jpg",
+    "mainImage": "/traditional-kundan-maang-tikka.jpg",
     "thumbnails": ["/images/jewelry/maangtikka1_thumb1.jpg", "/images/jewelry/maangtikka1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 18
@@ -381,7 +381,7 @@
     "price": 299,
     "size": ["Small"],
     "color": "#e5e4e2",
-    "mainImage": "/images/jewelry/nosepin1.jpg",
+    "mainImage": "/silver-nose-pin-with-diamond.jpg",
     "thumbnails": ["/images/jewelry/nosepin1_thumb1.jpg", "/images/jewelry/nosepin1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 45
@@ -392,7 +392,7 @@
     "price": 599,
     "size": ["Free Size"],
     "color": "#f8f8ff",
-    "mainImage": "/images/jewelry/anklet1.jpg",
+    "mainImage": "/crystal-beaded-anklet-pair.jpg",
     "thumbnails": ["/images/jewelry/anklet1_thumb1.jpg", "/images/jewelry/anklet1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 30
@@ -403,7 +403,7 @@
     "price": 699,
     "size": ["Adjustable"],
     "color": "#ffcc00",
-    "mainImage": "/images/jewelry/ring1.jpg",
+    "mainImage": "/gold-plated-adjustable-ring.jpg",
     "thumbnails": ["/images/jewelry/ring1_thumb1.jpg", "/images/jewelry/ring1_thumb2.jpg"],
     "category": "Jewellery",
     "stock": 32
@@ -414,7 +414,7 @@
     "price": 699,
     "size": ["One Size"],
     "color": "#000000",
-    "mainImage": "/images/caps/cap1.jpg",
+    "mainImage": "/classic-black-baseball-cap.jpg",
     "thumbnails": ["/images/caps/cap1_thumb1.jpg", "/images/caps/cap1_thumb2.jpg"],
     "category": "Caps",
     "stock": 40
@@ -425,7 +425,7 @@
     "price": 799,
     "size": ["One Size"],
     "color": "#ff0000",
-    "mainImage": "/images/caps/cap2.jpg",
+    "mainImage": "/red-snapback-cap.jpg",
     "thumbnails": ["/images/caps/cap2_thumb1.jpg", "/images/caps/cap2_thumb2.jpg"],
     "category": "Caps",
     "stock": 35
@@ -436,7 +436,7 @@
     "price": 749,
     "size": ["One Size"],
     "color": "#1e90ff",
-    "mainImage": "/images/caps/cap3.jpg",
+    "mainImage": "/blue-dad-hat.jpg",
     "thumbnails": ["/images/caps/cap3_thumb1.jpg", "/images/caps/cap3_thumb2.jpg"],
     "category": "Caps",
     "stock": 50
@@ -447,7 +447,7 @@
     "price": 599,
     "size": ["One Size"],
     "color": "#228b22",
-    "mainImage": "/images/caps/cap4.jpg",
+    "mainImage": "/green-adjustable-beanie.jpg",
     "thumbnails": ["/images/caps/cap4_thumb1.jpg", "/images/caps/cap4_thumb2.jpg"],
     "category": "Caps",
     "stock": 45
@@ -458,7 +458,7 @@
     "price": 699,
     "size": ["One Size"],
     "color": "#ffffff",
-    "mainImage": "/images/caps/cap5.jpg",
+    "mainImage": "/white-mesh-trucker-cap.jpg",
     "thumbnails": ["/images/caps/cap5_thumb1.jpg", "/images/caps/cap5_thumb2.jpg"],
     "category": "Caps",
     "stock": 30
@@ -469,7 +469,7 @@
     "price": 849,
     "size": ["One Size"],
     "color": "#000000",
-    "mainImage": "/images/caps/cap6.jpg",
+    "mainImage": "/black-flat-bill-snapback.jpg",
     "thumbnails": ["/images/caps/cap6_thumb1.jpg", "/images/caps/cap6_thumb2.jpg"],
     "category": "Caps",
     "stock": 25
@@ -480,7 +480,7 @@
     "price": 699,
     "size": ["One Size"],
     "color": "#ffc0cb",
-    "mainImage": "/images/caps/cap7.jpg",
+    "mainImage": "/pink-cotton-baseball-cap.jpg",
     "thumbnails": ["/images/caps/cap7_thumb1.jpg", "/images/caps/cap7_thumb2.jpg"],
     "category": "Caps",
     "stock": 38
@@ -491,7 +491,7 @@
     "price": 799,
     "size": ["One Size"],
     "color": "#808080",
-    "mainImage": "/images/caps/cap8.jpg",
+    "mainImage": "/grey-wool-blend-beanie.jpg",
     "thumbnails": ["/images/caps/cap8_thumb1.jpg", "/images/caps/cap8_thumb2.jpg"],
     "category": "Caps",
     "stock": 40
@@ -502,7 +502,7 @@
     "price": 749,
     "size": ["One Size"],
     "color": "#000080",
-    "mainImage": "/images/caps/cap9.jpg",
+    "mainImage": "/navy-blue-sport-cap.jpg",
     "thumbnails": ["/images/caps/cap9_thumb1.jpg", "/images/caps/cap9_thumb2.jpg"],
     "category": "Caps",
     "stock": 42
@@ -513,7 +513,7 @@
     "price": 699,
     "size": ["One Size"],
     "color": "#ff8c00",
-    "mainImage": "/images/caps/cap10.jpg",
+    "mainImage": "/orange-runnig-cap.jpg",
     "thumbnails": ["/images/caps/cap10_thumb1.jpg", "/images/caps/cap10_thumb2.jpg"],
     "category": "Caps",
     "stock": 37
@@ -524,7 +524,7 @@
     "price": 1299,
     "size": ["S", "M", "L", "XL"],
     "color": "#000000",
-    "mainImage": "/images/gloves/glove1.jpg",
+    "mainImage": "/black-leather-winter-gloves.jpg",
     "thumbnails": ["/images/gloves/glove1_thumb1.jpg", "/images/gloves/glove1_thumb2.jpg"],
     "category": "Gloves",
     "stock": 30
@@ -535,7 +535,7 @@
     "price": 799,
     "size": ["One Size"],
     "color": "#a0522d",
-    "mainImage": "/images/gloves/glove2.jpg",
+    "mainImage": "/fingerless-gloves.jpg",
     "thumbnails": ["/images/gloves/glove2_thumb1.jpg", "/images/gloves/glove2_thumb2.jpg"],
     "category": "Gloves",
     "stock": 40
@@ -546,7 +546,7 @@
     "price": 1099,
     "size": ["S", "M", "L"],
     "color": "#696969",
-    "mainImage": "/images/gloves/glove3.jpg",
+    "mainImage": "/thermal-touchscreen-gloves.jpg",
     "thumbnails": ["/images/gloves/glove3_thumb1.jpg", "/images/gloves/glove3_thumb2.jpg"],
     "category": "Gloves",
     "stock": 25
@@ -557,7 +557,7 @@
     "price": 1499,
     "size": ["M", "L", "XL"],
     "color": "#2f2f2f",
-    "mainImage": "/images/gloves/glove4.jpg",
+    "mainImage": "/black-suede-gloves.jpg",
     "thumbnails": ["/images/gloves/glove4_thumb1.jpg", "/images/gloves/glove4_thumb2.jpg"],
     "category": "Gloves",
     "stock": 18
@@ -568,7 +568,7 @@
     "price": 899,
     "size": ["S", "M", "L"],
     "color": "#b22222",
-    "mainImage": "/images/gloves/glove5.jpg",
+    "mainImage": "/red-woolen-winter-gloves.jpg",
     "thumbnails": ["/images/gloves/glove5_thumb1.jpg", "/images/gloves/glove5_thumb2.jpg"],
     "category": "Gloves",
     "stock": 35
@@ -579,7 +579,7 @@
     "price": 999,
     "size": ["M", "L", "XL"],
     "color": "#808080",
-    "mainImage": "/images/gloves/glove6.jpg",
+    "mainImage": "/grey-fleece-lined-gloves.jpg",
     "thumbnails": ["/images/gloves/glove6_thumb1.jpg", "/images/gloves/glove6_thumb2.jpg"],
     "category": "Gloves",
     "stock": 28
@@ -590,7 +590,7 @@
     "price": 1199,
     "size": ["L", "XL"],
     "color": "#8b4513",
-    "mainImage": "/images/gloves/glove7.jpg",
+    "mainImage": "/brown-leather-gloves.jpg",
     "thumbnails": ["/images/gloves/glove7_thumb1.jpg", "/images/gloves/glove7_thumb2.jpg"],
     "category": "Gloves",
     "stock": 20
@@ -601,7 +601,7 @@
     "price": 499,
     "size": ["S", "M", "L"],
     "color": "#ffffff",
-    "mainImage": "/images/gloves/glove8.jpg",
+    "mainImage": "/white-cotton-gloves.jpg",
     "thumbnails": ["/images/gloves/glove8_thumb1.jpg", "/images/gloves/glove8_thumb2.jpg"],
     "category": "Gloves",
     "stock": 45
@@ -612,7 +612,7 @@
     "price": 1799,
     "size": ["M", "L", "XL"],
     "color": "#000000",
-    "mainImage": "/images/gloves/glove9.jpg",
+    "mainImage": "/black-waterproof-ski-gloves.jpg",
     "thumbnails": ["/images/gloves/glove9_thumb1.jpg", "/images/gloves/glove9_thumb2.jpg"],
     "category": "Gloves",
     "stock": 15
@@ -623,7 +623,7 @@
     "price": 849,
     "size": ["S", "M"],
     "color": "#ffc0cb",
-    "mainImage": "/images/gloves/glove10.jpg",
+    "mainImage": "/pink-soft-woolen-gloves.jpg",
     "thumbnails": ["/images/gloves/glove10_thumb1.jpg", "/images/gloves/glove10_thumb2.jpg"],
     "category": "Gloves",
     "stock": 30
