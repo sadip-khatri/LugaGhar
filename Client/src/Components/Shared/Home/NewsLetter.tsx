@@ -12,7 +12,7 @@ const NewsLetter = () => {
 
       // 1. Show alert to user
       alert(
-        `You have subscribed to 246 Impex. We'll send updates to: 246Impex@gmail.com`
+        `You have subscribed to LugaGhar. We'll send updates to: lugaghar@example.com`
       );
 
       // 2. (Optional) Send email to backend API
@@ -21,7 +21,7 @@ const NewsLetter = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: "246Impex@gmail.com" }),
+        body: JSON.stringify({ email: "lugaghar@example.com" }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -39,19 +39,19 @@ const NewsLetter = () => {
   };
 
   return (
-    <div className="bg-gray-50 py-16">
+    <div className="bg-[var(--color-bg)] py-16">
       <div className="container mx-auto px-4 md:px-6 lg:px-[85px]">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
+          <div className="bg-[var(--color-bg)] rounded-lg shadow-lg p-8 md:p-12">
             {/* Header */}
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">
                 Stay Updated with{" "}
-                <span className="text-[#2563eb]">246 Impex</span>
+                <span className="text-[var(--color-accent)]">LugaGhar</span>
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+              <p className="text-[var(--color-secondary)] text-lg leading-relaxed max-w-2xl mx-auto">
                 Subscribe to our newsletter and be the first to know about new
-                arrivals, . Join our community!
+                arrivals, exclusive offers, and style tips. Join our community!
               </p>
             </div>
 
@@ -61,35 +61,35 @@ const NewsLetter = () => {
                 {
                   title: "Early Access",
                   description:
-                    "Be the first to explore upcoming gadgets and product launches",
+                    "Be the first to explore new collections and seasonal arrivals.",
                 },
                 {
-                  title: "Latest Tech Drops",
+                  title: "Exclusive Offers",
                   description:
-                    "Stay updated with our newest arrivals in smart devices and accessories",
+                    "Get access to special discounts and promotions.",
                 },
                 {
-                  title: "Tech Insights",
+                  title: "Style Inspiration",
                   description:
-                    "Get expert reviews, setup tutorials, and tech tips straight to your inbox",
+                    "Get fashion tips and outfit ideas straight to your inbox.",
                 },
               ].map((benefit, index) => (
                 <div key={index} className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-[var(--color-text)] mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{benefit.description}</p>
+                  <p className="text-[var(--color-secondary)] text-sm">{benefit.description}</p>
                 </div>
               ))}
             </div>
 
             {/* Newsletter Form */}
-            <div className="bg-gray-50 rounded-lg p-6 md:p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="bg-[var(--color-bg)] rounded-lg p-6 md:p-8">
+              <h3 className="text-xl font-semibold text-[var(--color-text)] mb-4">
                 Join Our Newsletter
               </h3>
-              <p className="text-gray-600 mb-6">
-                Get the exclusive updates of 246 Impex
+              <p className="text-[var(--color-secondary)] mb-6">
+                Get the exclusive updates of LugaGhar
               </p>
 
               <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -99,12 +99,12 @@ const NewsLetter = () => {
                     placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb]"
+                    className="flex-1 px-4 py-3 border border-[var(--color-secondary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)]"
                     required
                   />
                   <button
                     type="submit"
-                    className="bg-[#2563eb] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#1d4ed8] transition-colors flex items-center justify-center gap-2"
+                    className="bg-[var(--color-accent)] text-[var(--color-bg)] px-6 py-3 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors flex items-center justify-center gap-2"
                   >
                     <FaPaperPlane className="w-4 h-4" />
                     Subscribe
@@ -115,14 +115,14 @@ const NewsLetter = () => {
               {/* Success Message */}
               {isSubscribed && (
                 <div className="mt-4 bg-green-100 border border-green-300 text-green-700 px-4 py-3 rounded-lg text-center">
-                  🎉 Welcome to the 246 Impex community! Check your email for
+                  🎉 Welcome to the LugaGhar community! Check your email for
                   confirmation.
                 </div>
               )}
 
-              <p className="text-gray-500 text-sm mt-4">
-                By subscribing, you agree to receive marketing emails from 246
-                Impex. You can unsubscribe at any time.
+              <p className="text-[var(--color-secondary)] text-sm mt-4">
+                By subscribing, you agree to receive marketing emails from LugaGhar.
+                You can unsubscribe at any time.
               </p>
             </div>
           </div>

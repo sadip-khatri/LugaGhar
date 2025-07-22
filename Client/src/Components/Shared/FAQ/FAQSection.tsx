@@ -99,21 +99,21 @@ const faqs = [
       {
         question: "Media features or editorial enquiries",
         answer:
-          "Please email us at press@246impex.com for media-related queries.",
+          "Please email us at press@LugaGhar.com for media-related queries.",
       },
       {
         question: "Creator collaborations & brand tie-ups",
         answer:
-          "We love working with creators! Reach out at collab@246impex.com.",
+          "We love working with creators! Reach out at collab@LugaGhar.com.",
       },
       {
         question: "Wholesale, gifting or private label",
-        answer: "For bulk or custom inquiries, contact wholesale@246impex.com.",
+        answer: "For bulk or custom inquiries, contact wholesale@LugaGhar.com.",
       },
       {
         question: "Marketplace partnerships",
         answer:
-          "If you're a marketplace or stockist, write to us at partner@246impex.com.",
+          "If you're a marketplace or stockist, write to us at partner@LugaGhar.com.",
       },
     ],
   },

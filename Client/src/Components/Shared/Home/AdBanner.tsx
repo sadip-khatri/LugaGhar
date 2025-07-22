@@ -1,19 +1,19 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from "react-router-dom";
 
 const AdBanner = () => {
   return (
-    <section className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white py-12 px-6 md:px-20 rounded-lg shadow-md overflow-hidden">
+    <section className="w-full bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-accent)] to-[var(--color-secondary)] text-[var(--color-bg)] py-12 px-6 md:px-20 rounded-lg shadow-md overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8">
         {/* Left: Text Content */}
         <div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">246 IMPEX</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">LugaGhar</h2>
           <p className="text-xl sm:text-2xl font-semibold mb-2">
-            Versatile Gadgets & Accessories
+            Timeless Styles & Modern Apparel
           </p>
-          <p className="text-white/80 mb-6 text-sm sm:text-base max-w-md">
-            Explore the latest smartphones, smartwatches, audio gear, and
-            accessories crafted for your tech-driven lifestyle.
+          <p className="text-[var(--color-bg)]/80 mb-6 text-sm sm:text-base max-w-md">
+            Discover our collections of dresses, suits, casual wear, and
+            accessories designed for your lifestyle.
           </p>
           {/* <Link
             to="/new-arrival"
@@ -27,22 +27,22 @@ const AdBanner = () => {
         <div className="flex justify-center md:justify-end items-center gap-4 flex-wrap">
           <img
             src="/assets/img/Home/laptop-ad.png"
-            alt="Laptop"
+            alt="Blazers"
             className="w-28 h-auto"
           />
           <img
             src="/assets/img/Home/phone-ad.png"
-            alt="Phone"
+            alt="Bodycon"
             className="w-20 h-auto"
           />
           <img
             src="/assets/img/Home/watch-ad.png"
-            alt="Watch"
+            alt="Necklace"
             className="w-16 h-auto"
           />
           <img
             src="/assets/img/Home/headphone-ad.png"
-            alt="Headphones"
+            alt="Caps"
             className="w-24 h-auto"
           />
         </div>

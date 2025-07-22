@@ -2,13 +2,21 @@
 import { useCountry } from "../../Contexts/CountryContext";
 import axios from "axios";
 
-const CheckoutButton = ({ cartItems }) => {
+interface CartItem {
+  title: string;
+  image?: string;
+  mainImage?: string;
+  price: number;
+  quantity?: number;
+}
+
+const CheckoutButton = ({ cartItems }: { cartItems: CartItem[] }) => {
   const { selectedCountry } = useCountry();
 
   const handleCheckout = async () => {
     try {
       const res = await axios.post("http://localhost:5000/api/payment/create-checkout-session", {
-        cartItems: cartItems.map((item) => ({
+        cartItems: cartItems.map((item: CartItem) => ({
           title: item.title,
           image: item.image || item.mainImage,
           price: item.price * selectedCountry.rate,
@@ -26,7 +34,7 @@ const CheckoutButton = ({ cartItems }) => {
   return (
     <button
       onClick={handleCheckout}
-      className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+      className="bg-[var(--color-accent)] text-[var(--color-bg)] px-4 py-2 rounded hover:bg-[var(--color-cta)]"
     >
       Proceed to Checkout
     </button>

@@ -15,12 +15,13 @@ type Product = {
 
 const itemsPerPage = 6;
 
-const MobileCollections: React.FC = () => {
+const MensCollections: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [sortOption, setSortOption] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,12 +30,15 @@ const MobileCollections: React.FC = () => {
         const res = await api.get("/products");
         const allProducts = res.data;
 
-        // ✅ Only include Mobiles (case-sensitive)
-        const mobileProducts = allProducts.filter(
-          (p: Product) => p.category === "Mobiles"
+        // ✅ Only include men's collection categories
+        const filteredProducts = allProducts.filter(
+          (p: Product) =>
+            p.category === "M-Shirts" ||
+            p.category === "M-Pants" ||
+            p.category === "M-Blazers"
         );
 
-        setProducts(mobileProducts);
+        setProducts(filteredProducts);
       } catch (err) {
         console.error("Failed to fetch products", err);
         setProducts([]);
@@ -51,8 +55,17 @@ const MobileCollections: React.FC = () => {
     setCurrentPage(1);
   };
 
+  const handleCategoryChange = (cat: string) => {
+    setSelectedCategory(cat);
+    setCurrentPage(1);
+  };
+
   const sortedAndFiltered = useMemo(() => {
     let filtered = products;
+
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter((p) => p.category === selectedCategory);
+    }
 
     if (stockFilter === "in") {
       filtered = filtered.filter((p) => p.stock > 0);
@@ -71,7 +84,7 @@ const MobileCollections: React.FC = () => {
     }
 
     return filtered;
-  }, [products, stockFilter, priceRange, sortOption]);
+  }, [products, selectedCategory, stockFilter, priceRange, sortOption]);
 
   const totalPages = Math.ceil(sortedAndFiltered.length / itemsPerPage);
   const displayedProducts = sortedAndFiltered.slice(
@@ -84,10 +97,61 @@ const MobileCollections: React.FC = () => {
       <div className="flex flex-col md:flex-row gap-6">
         {/* Sidebar */}
         <aside className="w-full md:w-1/5 sticky top-20 self-start space-y-6">
-          <h2 className="text-2xl font-bold mb-1">MOBILE COLLECTION</h2>
+          <h2 className="text-2xl font-bold mb-1">MENS COLLECTION</h2>
           <p className="text-sm text-gray-500 mb-6">
             {loading ? "Loading..." : `${sortedAndFiltered.length} items found`}
           </p>
+
+          {/* Categories Filter */}
+          <div>
+            <h3 className="text-sm font-medium mb-2">CATEGORIES</h3>
+            <div className="space-y-1 text-sm text-gray-600">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="category"
+                  value="all"
+                  checked={selectedCategory === "all"}
+                  onChange={() => handleCategoryChange("all")}
+                  className="accent-[#C62828]"
+                />
+                All
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="category"
+                  value="M-Shirts"
+                  checked={selectedCategory === "M-Shirts"}
+                  onChange={() => handleCategoryChange("M-Shirts")}
+                  className="accent-[#C62828]"
+                />
+                Shirts
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="category"
+                  value="M-Pants"
+                  checked={selectedCategory === "M-Pants"}
+                  onChange={() => handleCategoryChange("M-Pants")}
+                  className="accent-[#C62828]"
+                />
+                Pants
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="category"
+                  value="M-Blazers"
+                  checked={selectedCategory === "M-Blazers"}
+                  onChange={() => handleCategoryChange("M-Blazers")}
+                  className="accent-[#C62828]"
+                />
+                Blazers
+              </label>
+            </div>
+          </div>
 
           {/* Price Range */}
           <div>
@@ -111,12 +175,12 @@ const MobileCollections: React.FC = () => {
                       Math.max(+e.target.value, priceRange[0] + 100),
                     ])
                   }
-                  className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-[#2563eb]"
+                  className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-[#C62828]"
                 />
 
                 <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-gray-300 z-0" />
                 <div
-                  className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[#2563eb] z-0"
+                  className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[#C62828] z-0"
                   style={{
                     left: `${(priceRange[0] / 10000) * 100}%`,
                     width: `${
@@ -141,7 +205,7 @@ const MobileCollections: React.FC = () => {
                     type="radio"
                     name="stock"
                     value={status}
-                    className="accent-[#2563eb]"
+                    className="accent-[#C62828]"
                     checked={stockFilter === status}
                     onChange={() => handleStockChange(status as any)}
                   />
@@ -178,7 +242,7 @@ const MobileCollections: React.FC = () => {
             </div>
           ) : displayedProducts.length === 0 ? (
             <div className="text-center text-gray-500 mt-10">
-              No mobile products found.
+              No matching menswear found.
             </div>
           ) : (
             <>
@@ -207,7 +271,7 @@ const MobileCollections: React.FC = () => {
                     key={i + 1}
                     onClick={() => setCurrentPage(i + 1)}
                     className={`px-3 py-1 border text-sm rounded hover:bg-gray-100 ${
-                      currentPage === i + 1 ? "bg-[#2563eb] text-white" : ""
+                      currentPage === i + 1 ? "bg-[#C62828] text-white" : ""
                     }`}
                   >
                     {i + 1}
@@ -222,4 +286,4 @@ const MobileCollections: React.FC = () => {
   );
 };
 
-export default MobileCollections;
+export default MensCollections;

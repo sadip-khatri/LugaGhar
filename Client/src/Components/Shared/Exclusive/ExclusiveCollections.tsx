@@ -1,8 +1,9 @@
-/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prefer-const */
 import React, { useState, useEffect, useMemo } from "react";
 import ProductCard from "../../Ui/ProductCard";
 import api from "../../../Utils/api";
+import { FaStar } from "react-icons/fa";
 
 type Product = {
   _id: string;
@@ -13,7 +14,9 @@ type Product = {
   stock: number;
 };
 
-const categories = ["All", "Mobiles", "Laptops", "Headphones", "phone cases"];
+const itemsPerPage = 6;
+
+const exclusiveCategories = ["Bodycon", "M-Blazers", "Miniskirt", "Sari"];
 
 const ExclusiveCollections: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,6 +24,7 @@ const ExclusiveCollections: React.FC = () => {
   const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [sortOption, setSortOption] = useState("relevance");
+  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
   const fetchProducts = async () => {
@@ -43,47 +47,60 @@ const ExclusiveCollections: React.FC = () => {
     fetchProducts();
   }, []);
 
-  const filterAndSortProducts = useMemo(() => {
-    let filtered: Product[] = [];
+  const sidebarCategories = ["All", ...exclusiveCategories];
 
-    if (selectedCategory === "All") {
-      const categorySet = ["Mobiles", "Laptops", "Headphones", "Phone Cases"];
-      categorySet.forEach((cat) => {
-        const match = products.find(
-          (p) =>
-            p.category === cat &&
-            p.price >= priceRange[0] &&
-            p.price <= priceRange[1] &&
-            (stockFilter === "all" ||
-              (stockFilter === "in" && p.stock > 0) ||
-              (stockFilter === "out" && p.stock === 0))
-        );
-        if (match) filtered.push(match);
-      });
-    } else {
-      const categoryFiltered = products.filter(
-        (p) =>
-          p.category === selectedCategory &&
-          p.price >= priceRange[0] &&
-          p.price <= priceRange[1] &&
-          (stockFilter === "all" ||
-            (stockFilter === "in" && p.stock > 0) ||
-            (stockFilter === "out" && p.stock === 0))
-      );
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, stockFilter, priceRange, sortOption]);
 
-      if (sortOption === "low") {
-        categoryFiltered.sort((a, b) => a.price - b.price);
-      } else if (sortOption === "high") {
-        categoryFiltered.sort((a, b) => b.price - a.price);
+  const filteredProducts = useMemo(() => {
+    return products.filter((p) => {
+      const matchesCategory =
+        selectedCategory === "All"
+          ? exclusiveCategories.includes(p.category)
+          : p.category === selectedCategory;
+
+      const matchesPrice = p.price >= priceRange[0] && p.price <= priceRange[1];
+
+      const matchesStock =
+        stockFilter === "all" ||
+        (stockFilter === "in" && p.stock > 0) ||
+        (stockFilter === "out" && p.stock === 0);
+
+      return matchesCategory && matchesPrice && matchesStock;
+    });
+  }, [products, selectedCategory, stockFilter, priceRange]);
+
+  const sortedProducts = useMemo(() => {
+    let sorted = [...filteredProducts];
+    if (sortOption === "low") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOption === "high") {
+      sorted.sort((a, b) => b.price - a.price);
+    }
+    return sorted;
+  }, [filteredProducts, sortOption]);
+
+  const uniqueCategoryProducts = useMemo(() => {
+    const seenCategories = new Set<string>();
+    const uniqueProducts: Product[] = [];
+
+    for (const product of sortedProducts) {
+      if (!seenCategories.has(product.category)) {
+        uniqueProducts.push(product);
+        seenCategories.add(product.category);
       }
-
-      if (categoryFiltered.length > 0) {
-        filtered.push(categoryFiltered[0]); // show only one product
-      }
+      if (seenCategories.size >= itemsPerPage) break;
     }
 
-    return filtered;
-  }, [products, selectedCategory, stockFilter, priceRange, sortOption]);
+    return uniqueProducts;
+  }, [sortedProducts]);
+
+  const totalPages = Math.ceil(uniqueCategoryProducts.length / itemsPerPage);
+  const displayedProducts = uniqueCategoryProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <div className="px-4 md:px-16 py-10 bg-white">
@@ -91,19 +108,17 @@ const ExclusiveCollections: React.FC = () => {
         <div className="text-center text-gray-500">Loading...</div>
       ) : (
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Sidebar */}
           <aside className="w-full md:w-1/5">
             <div className="space-y-6 sticky top-20">
-              <h2 className="text-2xl font-bold mb-1">PRODUCT COLLECTION</h2>
+              <h2 className="text-2xl font-bold mb-1">EXCLUSIVE COLLECTIONS</h2>
               <p className="text-sm text-gray-500 mb-6">
-                {filterAndSortProducts.length} item(s)
+                {uniqueCategoryProducts.length} item(s)
               </p>
 
-              {/* Categories */}
               <div>
                 <h3 className="text-sm font-medium mb-2">CATEGORIES</h3>
                 <div className="space-y-1 text-sm text-gray-600">
-                  {categories.map((cat) => (
+                  {sidebarCategories.map((cat) => (
                     <label
                       key={cat}
                       className="flex items-center gap-2 cursor-pointer"
@@ -114,7 +129,7 @@ const ExclusiveCollections: React.FC = () => {
                         value={cat}
                         checked={selectedCategory === cat}
                         onChange={() => setSelectedCategory(cat)}
-                        className="accent-[#2563eb]"
+                        className="accent-[#C62828]"
                       />
                       {cat}
                     </label>
@@ -122,7 +137,6 @@ const ExclusiveCollections: React.FC = () => {
                 </div>
               </div>
 
-              {/* Price Range */}
               <div>
                 <h3 className="text-sm font-medium mb-3">PRICE RANGE</h3>
                 <div className="space-y-2 text-sm text-gray-700">
@@ -130,7 +144,6 @@ const ExclusiveCollections: React.FC = () => {
                     <span>Rs. {priceRange[0]}</span>
                     <span>Rs. {priceRange[1]}</span>
                   </div>
-
                   <div className="relative h-6">
                     <input
                       type="range"
@@ -141,11 +154,11 @@ const ExclusiveCollections: React.FC = () => {
                       onChange={(e) =>
                         setPriceRange([priceRange[0], +e.target.value])
                       }
-                      className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-[#2563eb]"
+                      className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-[#C62828]"
                     />
                     <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-gray-300 z-0" />
                     <div
-                      className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[#2563eb] z-0"
+                      className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[#C62828] z-0"
                       style={{
                         left: `${(priceRange[0] / 10000) * 100}%`,
                         width: `${
@@ -157,7 +170,6 @@ const ExclusiveCollections: React.FC = () => {
                 </div>
               </div>
 
-              {/* Stock Filter */}
               <div>
                 <h3 className="text-sm font-medium mb-2">AVAILABILITY</h3>
                 <div className="space-y-1 text-sm text-gray-600">
@@ -169,7 +181,7 @@ const ExclusiveCollections: React.FC = () => {
                       <input
                         type="radio"
                         name="stock"
-                        className="accent-[#2563eb]"
+                        className="accent-[#C62828]"
                         value={status}
                         checked={stockFilter === status}
                         onChange={() => setStockFilter(status as any)}
@@ -186,9 +198,7 @@ const ExclusiveCollections: React.FC = () => {
             </div>
           </aside>
 
-          {/* Main Content */}
           <div className="flex-1">
-            {/* Sorting */}
             <div className="flex justify-end py-4 mb-8">
               <select
                 className="border px-3 py-2 rounded text-sm"
@@ -201,23 +211,49 @@ const ExclusiveCollections: React.FC = () => {
               </select>
             </div>
 
-            {/* Product Grid */}
-            {filterAndSortProducts.length === 0 ? (
+            {displayedProducts.length === 0 ? (
               <div className="text-center text-gray-500 mt-10">
                 No products found.
               </div>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {filterAndSortProducts.map((product) => (
-                  <ProductCard
-                    key={product._id}
-                    id={product._id}
-                    image={product.mainImage}
-                    title={product.title}
-                    price={product.price}
-                    category={product.category}
-                  />
+                {displayedProducts.map((product) => (
+                  <div key={product._id} className="relative">
+                    <div className="absolute top-2 right-2 bg-red-600 text-white px-2 py-0.5 text-xs font-semibold rounded flex items-center gap-1 z-10">
+                      <FaStar className="text-yellow-300" />
+                      Exclusive
+                    </div>
+                    <ProductCard
+                      id={product._id}
+                      image={product.mainImage}
+                      title={product.title}
+                      price={product.price}
+                      category={product.category}
+                    />
+                  </div>
                 ))}
+              </div>
+            )}
+
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-8">
+                <div className="flex gap-2">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`px-3 py-1 border rounded ${
+                          currentPage === page
+                            ? "bg-[#C62828] text-white"
+                            : "bg-white text-gray-700"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    )
+                  )}
+                </div>
               </div>
             )}
           </div>

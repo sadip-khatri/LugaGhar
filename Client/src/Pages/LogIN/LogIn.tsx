@@ -121,7 +121,7 @@ const LogIn: React.FC = () => {
 
         <button
           type="submit"
-          className="bg-[#2563eb] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-4"
+          className="bg-[#C62828] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-4"
           disabled={loading}
         >
           {loading ? "Logging in..." : "LOGIN"}
@@ -133,11 +133,11 @@ const LogIn: React.FC = () => {
       </div>
 
       <div className="social-login">
-        <button className="google-login bg-[#2563eb] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-2 flex items-center justify-center gap-2">
+        <button className="google-login bg-[#C62828] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-2 flex items-center justify-center gap-2">
           <FcGoogle />
           Continue with Google
         </button>
-        <button className="facebook-login bg-[#2563eb] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-2 flex items-center justify-center gap-2">
+        <button className="facebook-login bg-[#C62828] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-2 flex items-center justify-center gap-2">
           <FaFacebookF />
           Continue with Facebook
         </button>
@@ -149,7 +149,7 @@ const LogIn: React.FC = () => {
 
       <div className="resend-confirmation">
         <p>You didn't receive anything?</p>
-        <button className="resend-button bg-[#2563eb] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-2">
+        <button className="resend-button bg-[#C62828] hover:bg-[#174ea6] text-white font-medium py-2 px-4 rounded-lg transition-colors w-full mt-2">
           Resend
         </button>
       </div>

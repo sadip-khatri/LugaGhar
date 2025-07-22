@@ -34,7 +34,12 @@ const TermsAndCondition: React.FC = () => {
         <h2 className="text-xl font-semibold mb-2">2. The Reveiled Platform</h2>
         <p className="mb-4">
           2.1. The Reveiled Platform is a portal or online marketplace through
-          which Sellers can advertise or display their new and used tech products, gadgets, and electronics for sale to potential Buyers. We act as a payment collection agent each time a Buyer purchases Goods from a Seller on, or via, the Reveiled Platform. We are not a Buyer, Seller, broker, or insurer. Our role should be construed strictly in this context.
+          which Sellers can advertise or display their new and used tech
+          products, gadgets, and electronics for sale to potential Buyers. We
+          act as a payment collection agent each time a Buyer purchases Goods
+          from a Seller on, or via, the Reveiled Platform. We are not a Buyer,
+          Seller, broker, or insurer. Our role should be construed strictly in
+          this context.
         </p>
         <p>
           2.2. When you create an Account on the Reveiled Platform, you are
@@ -88,15 +93,16 @@ const TermsAndCondition: React.FC = () => {
 
         <p>
           5.2. Your Account will be operated by a username and password. Your
-          username will be your email address (246Impex@gmail.com), and you can select your own
-          password using the Registration Portal. You can change your password
-          at your convenience.
+          username will be your email address (LugaGhar@gmail.com), and you can
+          select your own password using the Registration Portal. You can change
+          your password at your convenience.
         </p>
 
         <p>
           5.3. When you create an Account, you will be sent a verification
-          hyperlink to your nominated email address (246Impex@gmail.com). To activate your Account,
-          you must click the hyperlink in the verification email.
+          hyperlink to your nominated email address (LugaGhar@gmail.com). To
+          activate your Account, you must click the hyperlink in the
+          verification email.
         </p>
 
         <p>
@@ -512,7 +518,7 @@ const TermsAndCondition: React.FC = () => {
         <h2 className="text-xl font-semibold mb-2">24. Contact Us</h2>
         <p className="mb-2">
           If you have any questions about this agreement, please contact us via
-          email at 246Impex@gmail.com.
+          email at LugaGhar@gmail.com.
         </p>
       </section>
 

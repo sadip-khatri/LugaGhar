@@ -34,8 +34,8 @@ const SiteMap: React.FC = () => {
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
-      <div className="bg-[#eff6ff] border border-[#2563eb] rounded-2xl shadow-lg p-8">
-        <h1 className="text-4xl font-bold text-[#2563eb] text-center mb-10">
+      <div className="bg-[#eff6ff] border border-[#C62828] rounded-2xl shadow-lg p-8">
+        <h1 className="text-4xl font-bold text-[#C62828] text-center mb-10">
           Site Map
         </h1>
         <ul className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -43,7 +43,7 @@ const SiteMap: React.FC = () => {
             <li key={index}>
               <a
                 href={link.path}
-                className="block bg-white text-[#2563eb] font-medium text-sm text-center py-2 px-3 rounded-md shadow hover:bg-[#2563eb] hover:text-white transition duration-300"
+                className="block bg-white text-[#C62828] font-medium text-sm text-center py-2 px-3 rounded-md shadow hover:bg-[#C62828] hover:text-white transition duration-300"
               >
                 {link.name}
               </a>

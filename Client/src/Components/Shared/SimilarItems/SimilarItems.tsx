@@ -78,7 +78,7 @@ const SimilarItems: React.FC<SimilarItemsProps> = ({ currentProduct }) => {
               Discover new arrivals in this category.
             </p>
             <Link to={`/${currentProduct.category?.toLowerCase()}`}>
-                              <button className="mt-4 px-5 py-2 border rounded-full hover:bg-[#2563eb] hover:text-white transition">
+              <button className="mt-4 px-5 py-2 border rounded-full hover:bg-[#C62828] hover:text-white transition">
                 Shop Category →
               </button>
             </Link>

@@ -14,7 +14,7 @@ type Product = {
   stock: number;
 };
 
-const categories = ["Phone Cases", "Headphones", "Chargers"];
+const categories = ["All", "Jewellery", "Caps"];
 const itemsPerPage = 6;
 
 const Accessoriess: React.FC = () => {
@@ -30,11 +30,9 @@ const Accessoriess: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const res = await api.get("/products?tag=new-arrival");
-
         const filtered = res.data.filter(
-          (p: any) => p.id <= 14 && categories.includes(p.category)
+          (p: any) => p.id <= 64 && categories.includes(p.category)
         );
-
         setProducts(filtered);
       } catch (error) {
         console.error("Failed to fetch accessories", error);
@@ -48,11 +46,16 @@ const Accessoriess: React.FC = () => {
 
   const handleCategoryChange = (category: string) => {
     setCurrentPage(1);
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
+    if (category === "All") {
+      setSelectedCategories([]); // Clear category filters
+    } else {
+      setSelectedCategories((prev) => {
+        const newCategories = prev.includes(category)
+          ? prev.filter((c) => c !== category)
+          : [...prev, category];
+        return newCategories.filter((c) => c !== "All"); // Remove "All" if present
+      });
+    }
   };
 
   const handleStockChange = (status: "all" | "in" | "out") => {
@@ -63,22 +66,26 @@ const Accessoriess: React.FC = () => {
   const sortedAndFiltered = useMemo(() => {
     let filtered = products;
 
+    // Apply category filter (skip if "All" is selected or no category selected)
     if (selectedCategories.length > 0) {
       filtered = filtered.filter((p) =>
         selectedCategories.includes(p.category)
       );
     }
 
+    // Apply stock filter
     if (stockFilter === "in") {
       filtered = filtered.filter((p) => p.stock > 0);
     } else if (stockFilter === "out") {
       filtered = filtered.filter((p) => p.stock === 0);
     }
 
+    // Apply price filter
     filtered = filtered.filter(
       (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
     );
 
+    // Sorting
     if (sortOption === "low") {
       filtered = [...filtered].sort((a, b) => a.price - b.price);
     } else if (sortOption === "high") {
@@ -115,9 +122,13 @@ const Accessoriess: React.FC = () => {
                 >
                   <input
                     type="checkbox"
-                    checked={selectedCategories.includes(cat)}
+                    checked={
+                      cat === "All"
+                        ? selectedCategories.length === 0
+                        : selectedCategories.includes(cat)
+                    }
                     onChange={() => handleCategoryChange(cat)}
-                    className="accent-[#2563eb]"
+                    className="accent-[#C62828]"
                   />
                   {cat}
                 </label>
@@ -178,7 +189,7 @@ const Accessoriess: React.FC = () => {
                     value={status}
                     checked={stockFilter === status}
                     onChange={() => handleStockChange(status as any)}
-                    className="accent-[#2563eb]"
+                    className="accent-[#C62828]"
                   />
                   {status === "all"
                     ? "All"
@@ -239,7 +250,7 @@ const Accessoriess: React.FC = () => {
                     key={i + 1}
                     onClick={() => setCurrentPage(i + 1)}
                     className={`px-3 py-1 border text-sm rounded hover:bg-gray-100 ${
-                      currentPage === i + 1 ? "bg-[#2563eb] text-white" : ""
+                      currentPage === i + 1 ? "bg-[#C62828] text-white" : ""
                     }`}
                   >
                     {i + 1}

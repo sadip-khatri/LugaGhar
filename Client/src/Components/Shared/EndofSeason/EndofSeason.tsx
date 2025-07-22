@@ -27,11 +27,7 @@ const EndofSeason: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-
-        const res = await api.get("/products"); 
-
-       
-
+        const res = await api.get("/products");
 
         setProducts(res.data);
       } catch (err) {
@@ -240,7 +236,7 @@ const EndofSeason: React.FC = () => {
                     key={product._id}
                     className="block"
                   >
-                   <ProductCard
+                    <ProductCard
                       key={product._id}
                       id={product._id}
                       image={product.mainImage}
@@ -259,7 +255,7 @@ const EndofSeason: React.FC = () => {
                     key={i + 1}
                     onClick={() => setCurrentPage(i + 1)}
                     className={`px-3 py-1 border text-sm rounded hover:bg-gray-100 ${
-                      currentPage === i + 1 ? "bg-[#2563eb] text-white" : ""
+                      currentPage === i + 1 ? "bg-[#C62828] text-white" : ""
                     }`}
                   >
                     {i + 1}

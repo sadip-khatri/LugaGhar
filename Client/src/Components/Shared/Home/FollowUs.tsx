@@ -4,7 +4,7 @@ function FollowUs() {
   return (
     <>
       <section className="px-6 md:px-20 py-10">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center md:text-left">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center md:text-left text-[var(--color-text)]">
           FOLLOW US AT INSTAGRAM
         </h2>
 

@@ -15,13 +15,8 @@
     "description": "Apple's most powerful smartphone with advanced camera and A16 Bionic chip.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "One of the most sought-after smartphones in 2024.",
     "category": "Mobiles",
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Dresses",
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
     "stock": 10
   },
   {
@@ -40,14 +35,8 @@
     "description": "Flagship Android smartphone with high-end performance and camera features.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Loved by tech enthusiasts for its camera and speed.",
     "category": "Mobiles"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Dresses",
-    "stock": 0
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 3,
@@ -65,14 +54,8 @@
     "description": "Powerful ultrabook with sleek design and long battery life.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Top choice for professionals and students alike.",
     "category": "Laptops"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Dresses",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 4,
@@ -90,14 +73,8 @@
     "description": "Affordable gaming laptop with powerful graphics card.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Ideal for casual and competitive gamers.",
     "category": "Laptops"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Dresses",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 5,
@@ -115,14 +92,8 @@
     "description": "Industry-leading noise cancellation with crystal-clear sound.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Used by music lovers and travelers for immersive audio.",
     "category": "Headphones"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Dresses",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 6,
@@ -140,14 +111,8 @@
     "description": "Wireless earbuds with active noise cancellation and spatial audio.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Best-selling earbuds for Apple device users.",
     "category": "Headphones"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Dresses",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 7,
@@ -165,14 +130,8 @@
     "description": "Super-fast charging adapter for OnePlus and other devices.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Trusted by users who need rapid power on-the-go.",
     "category": "Chargers"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Dresses",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 8,
@@ -190,14 +149,8 @@
     "description": "Compact and efficient charger compatible with multiple devices.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Widely praised for its reliability and fast charging.",
     "category": "Chargers"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Bags",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 9,
@@ -215,14 +168,8 @@
     "description": "Soft-touch silicone case designed for a perfect fit.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Stylish protection for your premium phone.",
     "category": "Phone Cases"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Bags",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 10,
@@ -240,14 +187,8 @@
     "description": "Crystal-clear case that shows off your phone's design.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Keeps your phone safe without hiding its beauty.",
     "category": "Phone Cases"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Bags",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 11,
@@ -265,14 +206,8 @@
     "description": "Durable and stylish case for ultimate phone protection.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Perfect for heavy-duty phone users.",
     "category": "Phone Cases"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Bags",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   },
   {
     "id": 12,
@@ -290,13 +225,7 @@
     "description": "Attachable wallet with magnets for iPhones.",
     "condition": "Brand New",
     "fit": "Slim Fit",
-<<<<<<< HEAD
     "story": "Combines elegance with daily convenience.",
     "category": "Phone Cases"
-=======
-    "story": "Worn by top celebrities on the red carpet...",
-    "category": "Bags",
-    "stock": 10
->>>>>>> def3aaad95fc98fc19fb3ea5b0814890cefffc80
   }
 ]

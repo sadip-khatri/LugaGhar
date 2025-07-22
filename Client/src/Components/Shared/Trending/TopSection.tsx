@@ -5,7 +5,7 @@ function TopSection() {
       <section className=" bg-gray-100">
         <div className="content container mx-auto py-2 text-sm">
           <Link to="/">Home</Link> /{" "}
-          <span className="text-[#2563eb] font-semibold">Trending</span>
+          <span className="text-[#C62828] font-semibold">Trending</span>
         </div>
       </section>
     </>

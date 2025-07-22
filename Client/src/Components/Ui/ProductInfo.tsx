@@ -127,7 +127,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
               </div>
             )}
             {product.discount && (
-              <div className="absolute top-4 left-4 bg-[#2563eb] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+              <div className="absolute top-4 left-4 bg-[#C62828] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                 {product.discount}%
               </div>
             )}
@@ -148,7 +148,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
           {/* Price */}
           <div className="space-y-1">
             <div className="flex items-baseline gap-2">
-              <span className="text-xl text-[#2563eb]">
+              <span className="text-xl text-[#C62828]">
                 {formatPrice(localPrice, selectedCountry.currency)}
               </span>
               {localOriginalPrice && (
@@ -215,7 +215,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
           {/* Add to Cart */}
           <button
             onClick={handleAddToCart}
-            className="w-full bg-[#2563eb] text-white py-3 px-6 font-medium tracking-wide hover:bg-[#1d4ed8] transition-colors cursor-pointer"
+            className="w-full bg-[#C62828] text-white py-3 px-6 font-medium tracking-wide hover:bg-[#1d4ed8] transition-colors cursor-pointer"
           >
             ADD TO CART
           </button>

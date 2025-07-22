@@ -5,7 +5,7 @@ function TopHead() {
       <section className=" bg-gray-100">
         <div className="content container mx-auto py-2 text-sm">
           <Link to="/">Home</Link> /{" "}
-          <span className="text-[#2563eb] font-semibold">FAQ</span>
+          <span className="text-[#C62828] font-semibold">FAQ</span>
         </div>
       </section>
     </>

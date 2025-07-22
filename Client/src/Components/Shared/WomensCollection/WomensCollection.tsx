@@ -14,24 +14,37 @@ type Product = {
 
 const itemsPerPage = 6;
 
-const LaptopCollection: React.FC = () => {
+const WomensCollection: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [sortOption, setSortOption] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  const categoryMap: { [key: string]: string } = {
+    Bodycon: "Bodycon",
+    Lehenga: "Lehenga",
+    Sari: "Sari",
+    Tops: "Tops",
+    Miniskirt: "Miniskirt",
+    "W-Shirts": "Shirts",
+    "W-Pants": "Pants",
+  };
+
+  const categoryKeys = Object.keys(categoryMap);
 
   const fetchProducts = async () => {
     try {
       const res = await api.get("/products");
-      const laptops = res.data
-        .filter((p: any) => p.category === "Laptops")
+      const womensProducts = res.data
+        .filter((p: any) => categoryKeys.includes(p.category))
         .map((p: any) => ({
           ...p,
           stock: p.stock ?? (Math.random() > 0.5 ? 0 : 10),
         }));
-      setProducts(laptops);
+      setProducts(womensProducts);
     } catch (err) {
       console.error("Failed to fetch products", err);
       setProducts([]);
@@ -49,6 +62,11 @@ const LaptopCollection: React.FC = () => {
     setCurrentPage(1);
   };
 
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
   const sortedAndFiltered = useMemo(() => {
     let filtered = products;
 
@@ -62,6 +80,10 @@ const LaptopCollection: React.FC = () => {
       (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
     );
 
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter((p) => p.category === selectedCategory);
+    }
+
     if (sortOption === "low") {
       filtered = [...filtered].sort((a, b) => a.price - b.price);
     } else if (sortOption === "high") {
@@ -69,7 +91,7 @@ const LaptopCollection: React.FC = () => {
     }
 
     return filtered;
-  }, [products, stockFilter, priceRange, sortOption]);
+  }, [products, stockFilter, priceRange, sortOption, selectedCategory]);
 
   const totalPages = Math.ceil(sortedAndFiltered.length / itemsPerPage);
   const displayedProducts = sortedAndFiltered.slice(
@@ -86,10 +108,44 @@ const LaptopCollection: React.FC = () => {
           {/* Sidebar */}
           <aside className="w-full md:w-1/5">
             <div className="space-y-6 sticky top-20">
-              <h2 className="text-2xl font-bold mb-1">LAPTOP COLLECTION</h2>
+              <h2 className="text-2xl font-bold mb-1">WOMENS COLLECTION</h2>
               <p className="text-sm text-gray-500 mb-6">
                 {sortedAndFiltered.length} items
               </p>
+
+              {/* Category Filter */}
+              <div>
+                <h3 className="text-sm font-medium mb-3">CATEGORY</h3>
+                <div className="space-y-1 text-sm text-gray-700">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="category"
+                      className="accent-[#C62828]"
+                      value="all"
+                      checked={selectedCategory === "all"}
+                      onChange={() => handleCategoryChange("all")}
+                    />
+                    All
+                  </label>
+                  {categoryKeys.map((cat) => (
+                    <label
+                      key={cat}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <input
+                        type="radio"
+                        name="category"
+                        className="accent-[#C62828]"
+                        value={cat}
+                        checked={selectedCategory === cat}
+                        onChange={() => handleCategoryChange(cat)}
+                      />
+                      {categoryMap[cat]}
+                    </label>
+                  ))}
+                </div>
+              </div>
 
               {/* Price Range */}
               <div>
@@ -99,7 +155,6 @@ const LaptopCollection: React.FC = () => {
                     <span>Rs. {priceRange[0]}</span>
                     <span>Rs. {priceRange[1]}</span>
                   </div>
-
                   <div className="relative h-6">
                     <input
                       type="range"
@@ -110,11 +165,11 @@ const LaptopCollection: React.FC = () => {
                       onChange={(e) =>
                         setPriceRange([priceRange[0], +e.target.value])
                       }
-                      className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-[#2563eb]"
+                      className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-[#C62828]"
                     />
                     <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-gray-300 z-0" />
                     <div
-                      className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[#2563eb] z-0"
+                      className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[#C62828] z-0"
                       style={{
                         left: `${(priceRange[0] / 10000) * 100}%`,
                         width: `${
@@ -138,7 +193,7 @@ const LaptopCollection: React.FC = () => {
                       <input
                         type="radio"
                         name="stock"
-                        className="accent-[#2563eb]"
+                        className="accent-[#C62828]"
                         value={status}
                         checked={stockFilter === status}
                         onChange={() => handleStockChange(status as any)}
@@ -158,18 +213,16 @@ const LaptopCollection: React.FC = () => {
           {/* Main Content */}
           <div className="flex-1">
             {/* Sort Options */}
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex gap-4">
-                <select
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                  className="border border-gray-300 px-3 py-1 text-sm"
-                >
-                  <option value="relevance">Relevance</option>
-                  <option value="low">Price: Low to High</option>
-                  <option value="high">Price: High to Low</option>
-                </select>
-              </div>
+            <div className="flex justify-end py-4 mb-8">
+              <select
+                className="border px-3 py-2 rounded text-sm"
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+              >
+                <option value="relevance">Sort by Relevance</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+              </select>
             </div>
 
             {/* Products Grid */}
@@ -197,7 +250,7 @@ const LaptopCollection: React.FC = () => {
                         onClick={() => setCurrentPage(page)}
                         className={`px-3 py-1 border rounded ${
                           currentPage === page
-                            ? "bg-[#2563eb] text-white"
+                            ? "bg-[#C62828] text-white"
                             : "bg-white text-gray-700"
                         }`}
                       >
@@ -215,4 +268,4 @@ const LaptopCollection: React.FC = () => {
   );
 };
 
-export default LaptopCollection;
+export default WomensCollection;

@@ -7,7 +7,6 @@ import dotenv from 'dotenv';
 import { connectDB } from '../config/db';
 import { getProfile, updateProfile } from "../controllers/userController";
 import { authenticate } from "../middleware/auth";
-import paymentRoutes from "../routes/paymentRoutes";
 
 
 const router = express.Router();
@@ -21,8 +20,6 @@ router.use("/cart", cartRoutes);
 
 router.get("/profile", authenticate, getProfile);
 router.put("/profile", authenticate, updateProfile);
-
-router.use("/payment", paymentRoutes);
 
 
 export default router;

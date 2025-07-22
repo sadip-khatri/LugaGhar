@@ -28,14 +28,12 @@ const Blog = () => {
       <div className="flex justify-between items-start flex-wrap gap-4">
         <div>
           <SectionHeading text="OUR BLOGS" />
-          <p className="max-w-xl text-gray-600">
-            At 246 Impex, our blog is crafted to bring you clear, reliable, and
-            practical tech knowledge. Whether you're exploring the latest
-            smartphones, laptops, or accessories, we provide easy-to-understand
-            insights, reviews, and how-to guides. From setting up your new
-            device to choosing the right gear for your needs, our content is
-            designed to empower your everyday tech decisions. Stay connected.
-            Stay ahead.
+          <p className="max-w-xl text-[var(--color-secondary)]">
+            At LugaGhar, our blog is crafted to bring you the latest in fashion,
+            style tips, and collection showcases. Whether you're looking for
+            outfit inspiration or care guides for your favorite fabrics,
+            our content is designed to empower your everyday style decisions.
+            Stay connected. Stay stylish.
           </p>
         </div>
         <ViewAllLink href="blog" />
@@ -44,14 +42,14 @@ const Blog = () => {
       {/* Scroll Buttons */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-2 top-[60%] transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 z-20 shadow-md hover:bg-gray-100 cursor-pointer"
+        className="absolute left-2 top-[60%] transform -translate-y-1/2 bg-[var(--color-bg)] border border-[var(--color-secondary)] rounded-full p-2 z-20 shadow-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] cursor-pointer"
       >
         <FaChevronLeft />
       </button>
 
       <button
         onClick={() => scroll("right")}
-        className="absolute right-2 top-[60%] transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 z-20 shadow-md hover:bg-gray-100 cursor-pointer"
+        className="absolute right-2 top-[60%] transform -translate-y-1/2 bg-[var(--color-bg)] border border-[var(--color-secondary)] rounded-full p-2 z-20 shadow-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] cursor-pointer"
       >
         <FaChevronRight />
       </button>
@@ -65,7 +63,7 @@ const Blog = () => {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="w-[240px] h-[370px] bg-[#f8f5f1] rounded-md overflow-hidden shadow-sm flex flex-col"
+              className="w-[240px] h-[370px] bg-[var(--color-bg)] rounded-md overflow-hidden shadow-sm flex flex-col"
             >
               <Link
                 to={`/blog/${blog.slug}`}
@@ -77,11 +75,11 @@ const Blog = () => {
                   className="w-full h-[180px] object-cover"
                 />
                 <div className="p-3 flex flex-col justify-between h-[170px]">
-                  <p className="text-sm text-gray-500 pb-2">{blog.author}</p>
+                  <p className="text-sm text-[var(--color-secondary)] pb-2">{blog.author}</p>
                   <h4 className="text-xs font-semibold uppercase tracking-wider pb-2 line-clamp-2">
                     {blog.title}
                   </h4>
-                  <p className="text-base font-semibold mt-1 text-gray-500">
+                  <p className="text-base font-semibold mt-1 text-[var(--color-secondary)]">
                     {new Date(blog.date).toLocaleDateString()}
                   </p>
                 </div>

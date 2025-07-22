@@ -8,3 +8,23 @@
 .container{
 
 } */
+/* Color Theme Variables */
+:root {
+  --color-bg: #FFFFFF;
+  --color-text: #1F1F1F;
+  --color-accent: #C62828;
+  --color-cta: #D4AF37;
+  --color-secondary: #2C3E50;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}

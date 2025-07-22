@@ -3,21 +3,21 @@ import { SectionHeading, ViewAllLink } from "../../Ui/Typography";
 
 const OurStory: React.FC = () => {
   return (
-    <section className="px-6 md:px-20 py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className="px-6 md:px-20 py-16 bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg)]">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
         <div>
           <SectionHeading text="OUR STORY" />
-          <p className="max-w-2xl text-gray-700 text-sm md:text-base leading-relaxed mt-2">
-            At <strong>246 Impex</strong>, we believe technology should elevate
-            everyday life. From humble beginnings in a garage lab to becoming a
-            trusted name in smart gadgets, our mission is to empower users
-            through innovation, reliability, and style.
+          <p className="max-w-2xl text-[var(--color-secondary)] text-sm md:text-base leading-relaxed mt-2">
+            At <strong>LugaGhar</strong>, we believe fashion should empower
+            everyday life. From humble beginnings to becoming a
+            trusted name in apparel, our mission is to empower you
+            through quality, comfort, and style.
           </p>
         </div>
         <a
           href="/our-story"
-          className="text-blue-600 hover:text-blue-800 transition font-medium text-sm md:text-base"
+          className="text-[var(--color-accent)] hover:text-[var(--color-cta)] transition font-medium text-sm md:text-base"
         >
           Learn More →
         </a>
@@ -42,13 +42,13 @@ const OurStory: React.FC = () => {
             alt="Gadget distribution"
             className="w-full h-36 rounded-xl object-cover shadow-md"
           />
-          <div className="bg-white border border-gray-200 flex items-center justify-center rounded-xl h-14 font-bold text-lg text-[#2563eb] shadow-sm">
+          <div className="bg-[var(--color-bg)] border border-[var(--color-secondary)] flex items-center justify-center rounded-xl h-14 font-bold text-lg text-[var(--color-accent)] shadow-sm">
             {/* <img
               src="/images/logo-tech.png"
               alt="246 Impex"
               className="h-6 mr-2"
             /> */}
-            246 Impex
+            LugaGhar
           </div>
         </div>
 

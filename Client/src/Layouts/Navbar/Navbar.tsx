@@ -3,18 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   FaSearch,
-  FaUserPlus,
   FaUser,
-  FaSignInAlt,
   FaSignOutAlt,
   FaShoppingCart,
   FaBars,
   FaTimes,
-  FaHome,
-  FaStar,
-  FaHeart,
-  FaRocket,
-  FaCrown,
 } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -41,8 +34,8 @@ const Navbar = () => {
   const navItems = [
     // { label: "Home", path: "/" },
     { label: "New Arrivals", path: "/new-arrival" },
-    { label: "Mobile Collection", path: "/mobile-collection" },
-    { label: "Laptop Collection", path: "/laptop-collection" },
+    { label: "Mens Collection", path: "/mens-collection" },
+    { label: "Womens Collection", path: "/womens-collection" },
     { label: "Exclusive", path: "/exclusive" },
     { label: "Accessories", path: "/accessories" },
     // { label: "Blogs", path: "/blogs" },
@@ -107,15 +100,19 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <div className="bg-white shadow-md sticky top-0 z-50">
+    <div className="bg-[var(--color-bg)] shadow-md sticky top-0 z-50">
       <div className="px-4 md:px-6 lg:px-[85px]">
         {/* Top Bar */}
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <div>
-              <h1 className="text-2xl font-bold text-[#2563eb]">246 IMPEX</h1>
-              <p className="text-xs text-gray-500">Your Trusted Tech Store</p>
+              <h1 className="text-2xl font-bold text-[var(--color-secondary)]">
+                LugaGhar
+              </h1>
+              <p className="text-xs text-[var(--color-secondary)]">
+                “House of Clothes”
+              </p>
             </div>
           </Link>
 
@@ -129,7 +126,7 @@ const Navbar = () => {
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb]"
+                  className="w-full pl-10 pr-4 py-2 bg-[var(--color-bg)] border border-[var(--color-secondary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-[var(--color-secondary)]"
                 />
               </div>
             </form>
@@ -177,13 +174,13 @@ const Navbar = () => {
               <div className="flex gap-2">
                 <Link
                   to="/register"
-                  className="bg-[#2563eb] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#1d4ed8] transition-colors"
+                  className="bg-[var(--color-accent)] text-[var(--color-bg)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors"
                 >
                   Sign Up
                 </Link>
                 <Link
                   to="/login"
-                  className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                  className="bg-[var(--color-secondary)] text-[var(--color-bg)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors"
                 >
                   Login
                 </Link>
@@ -195,13 +192,13 @@ const Navbar = () => {
                 </span>
                 <Link
                   to="/profile"
-                  className="w-8 h-8 bg-[#2563eb] rounded-lg flex items-center justify-center text-white hover:bg-[#1d4ed8] transition-colors"
+                  className="w-8 h-8 bg-[var(--color-secondary)] rounded-lg flex items-center justify-center text-[var(--color-bg)] hover:bg-[var(--color-cta)] transition-colors"
                 >
                   <FaUser />
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-white hover:bg-red-600 transition-colors"
+                  className="w-8 h-8 bg-[var(--color-accent)] rounded-lg flex items-center justify-center text-[var(--color-bg)] hover:bg-[var(--color-cta)] transition-colors"
                 >
                   <FaSignOutAlt />
                 </button>
@@ -210,11 +207,11 @@ const Navbar = () => {
 
             {/* Cart */}
             <Link to="/cart" className="relative">
-              <div className="w-10 h-10 bg-[#2563eb] rounded-lg flex items-center justify-center text-white hover:bg-[#1d4ed8] transition-colors">
+              <div className="w-10 h-10 bg-[var(--color-secondary)] rounded-lg flex items-center justify-center text-[var(--color-bg)] hover:bg-[var(--color-cta)] transition-colors">
                 <FaShoppingCart />
               </div>
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                <span className="absolute -top-2 -right-2 bg-[var(--color-accent)] text-[var(--color-bg)] text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
                   {cartCount}
                 </span>
               )}
@@ -223,7 +220,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button (Only) */}
           <button
-            className="md:hidden w-10 h-10 bg-[#2563eb] rounded-lg flex items-center justify-center text-white hover:bg-[#1d4ed8] transition-colors"
+            className="md:hidden w-10 h-10 bg-[var(--color-secondary)] rounded-lg flex items-center justify-center text-[var(--color-bg)] hover:bg-[var(--color-cta)] transition-colors"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
           >
             {mobileMenuOpen ? <FaTimes /> : <FaBars />}
@@ -232,11 +229,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-black bg-opacity-40">
-            <div className="fixed top-0 right-0 w-4/5 max-w-xs h-full bg-white shadow-lg p-6 flex flex-col gap-6 animate-slide-in">
+          <div className="md:hidden fixed inset-0 z-50 bg-[var(--color-text)] bg-opacity-40">
+            <div className="fixed top-0 right-0 w-4/5 max-w-xs h-full bg-[var(--color-bg)] shadow-lg p-6 flex flex-col gap-6 animate-slide-in">
               {/* Close Button */}
               <button
-                className="self-end mb-2 text-gray-500 hover:text-[#2563eb]"
+                className="self-end mb-2 text-[var(--color-secondary)] hover:text-[var(--color-cta)]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <FaTimes size={24} />
@@ -250,7 +247,7 @@ const Navbar = () => {
                     placeholder="Search products..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb]"
+                    className="w-full pl-10 pr-4 py-2 bg-[var(--color-bg)] border border-[var(--color-secondary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-[var(--color-secondary)]"
                   />
                 </div>
               </form>
@@ -260,7 +257,7 @@ const Navbar = () => {
                   <Link
                     key={idx}
                     to={item.path}
-                    className="text-gray-700 hover:text-[#2563eb] transition-colors font-medium text-lg"
+                    className="text-[var(--color-secondary)] hover:text-[var(--color-cta)] transition-colors font-medium text-lg"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -273,13 +270,13 @@ const Navbar = () => {
                   <>
                     <Link
                       to="/register"
-                      className="bg-[#2563eb] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#1d4ed8] transition-colors text-center"
+                      className="bg-[var(--color-accent)] text-[var(--color-bg)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors text-center"
                     >
                       Sign Up
                     </Link>
                     <Link
                       to="/login"
-                      className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors text-center"
+                      className="bg-[var(--color-secondary)] text-[var(--color-bg)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors text-center"
                     >
                       Login
                     </Link>
@@ -288,13 +285,13 @@ const Navbar = () => {
                   <>
                     <Link
                       to="/profile"
-                      className="w-full bg-[#2563eb] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#1d4ed8] transition-colors text-center flex items-center justify-center gap-2"
+                      className="w-full bg-[var(--color-secondary)] text-[var(--color-bg)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors text-center flex items-center justify-center gap-2"
                     >
                       <FaUser /> Profile
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="w-full bg-red-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-600 transition-colors text-center flex items-center justify-center gap-2"
+                      className="w-full bg-[var(--color-accent)] text-[var(--color-bg)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors text-center flex items-center justify-center gap-2"
                     >
                       <FaSignOutAlt /> Logout
                     </button>
@@ -304,12 +301,12 @@ const Navbar = () => {
               {/* Cart */}
               <Link
                 to="/cart"
-                className="w-full bg-[#2563eb] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#1d4ed8] transition-colors text-center flex items-center justify-center gap-2 relative"
+                className="w-full bg-[var(--color-secondary)] text-[var(--color-bg)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--color-cta)] transition-colors text-center flex items-center justify-center gap-2 relative"
               >
                 <FaShoppingCart />
                 Cart
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                  <span className="absolute -top-2 -right-2 bg-[var(--color-accent)] text-[var(--color-bg)] text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
                     {cartCount}
                   </span>
                 )}
@@ -325,7 +322,7 @@ const Navbar = () => {
               <Link
                 key={idx}
                 to={item.path}
-                className="text-gray-700 hover:text-[#2563eb] transition-colors font-medium text-center md:text-left"
+                className="text-[var(--color-secondary)] hover:text-[var(--color-cta)] transition-colors font-medium text-center md:text-left"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}

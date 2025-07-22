@@ -1,7 +1,7 @@
 // src/Ui/ProductCard.tsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { formatPrice } from "../../Utils/formatPrice";
+import { formatPrice } from "../../utils/formatPrice";
 import { useCountry } from "../../Contexts/CountryContext";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
@@ -36,13 +36,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
         
         {/* Wishlist Button */}
-        <button className="absolute top-3 right-3 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors duration-200 opacity-0 group-hover:opacity-100">
+        <button className="absolute top-3 right-3 w-8 h-8 bg-[var(--color-bg)]/90 rounded-full flex items-center justify-center text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors duration-200 opacity-0 group-hover:opacity-100">
           <FaHeart className="w-4 h-4" />
         </button>
 
         {/* Category Badge */}
         {category && (
-          <div className="absolute top-3 left-3 bg-[#2563eb] text-white px-2 py-1 rounded-md text-xs font-medium">
+          <div className="absolute top-3 left-3 bg-[var(--color-accent)] text-[var(--color-bg)] px-2 py-1 rounded-md text-xs font-medium">
             {category}
           </div>
         )}
@@ -50,12 +50,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+        <h3 className="text-lg font-semibold text-[var(--color-text)] mb-2 line-clamp-2">
           {title}
         </h3>
         
         <div className="flex items-center justify-between mb-4">
-          <span className="text-xl font-bold text-[#2563eb]">
+          <span className="text-xl font-bold text-[var(--color-secondary)]">
             {formatPrice(localPrice, selectedCountry.currency)}
           </span>
         </div>
@@ -68,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 e.preventDefault();
                 onAddToCart();
               }}
-              className="flex-1 bg-[#2563eb] text-white py-2 px-4 rounded-md font-medium hover:bg-[#1d4ed8] transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-[var(--color-secondary)] text-[var(--color-bg)] py-2 px-4 rounded-md font-medium hover:bg-[var(--color-cta)] transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <FaShoppingCart className="w-4 h-4" />
               Add to Cart
@@ -77,7 +77,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           
           <Link
             to={`/product/${id}`}
-            className="bg-gray-100 text-gray-700 py-2 px-4 rounded-md font-medium hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center"
+            className="bg-[var(--color-bg-secondary)] text-[var(--color-text)] py-2 px-4 rounded-md font-medium hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] transition-colors duration-200 flex items-center justify-center"
           >
             View
           </Link>

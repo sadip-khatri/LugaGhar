@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useMemo, useEffect } from "react";
 import ProductCard from "../../Ui/ProductCard";
@@ -14,7 +15,13 @@ type Product = {
   stock: number;
 };
 
-const categories = ["Mobiles", "Laptops", "Headphones", "Phone Cases"];
+const categories = [
+  "mens-collection",
+  "womens-collection",
+  "exclusive",
+  "jewellery",
+  "caps",
+];
 const itemsPerPage = 6;
 
 const NewArrivals: React.FC = () => {
@@ -32,7 +39,7 @@ const NewArrivals: React.FC = () => {
         const res = await api.get("/products?tag=new-arrival");
 
         // ✅ Only take products with id <= 14
-        const filtered = res.data.filter((p: any) => p.id <= 14);
+        const filtered = res.data.filter((p: any) => p.id <= 64);
 
         setProducts(filtered);
       } catch (error) {
@@ -116,7 +123,7 @@ const NewArrivals: React.FC = () => {
                     type="checkbox"
                     checked={selectedCategories.includes(cat)}
                     onChange={() => handleCategoryChange(cat)}
-                    className="accent-[#2563eb]"
+                    className="accent-[#C62828]"
                   />
                   {cat}
                 </label>
@@ -178,7 +185,7 @@ const NewArrivals: React.FC = () => {
                     value={status}
                     checked={stockFilter === status}
                     onChange={() => handleStockChange(status as any)}
-                    className="accent-[#2563eb]"
+                    className="accent-[#C62828]"
                   />
                   {status === "all"
                     ? "All"
@@ -242,7 +249,7 @@ const NewArrivals: React.FC = () => {
                     key={i + 1}
                     onClick={() => setCurrentPage(i + 1)}
                     className={`px-3 py-1 border text-sm rounded hover:bg-gray-100 ${
-                      currentPage === i + 1 ? "bg-[#2563eb] text-white" : ""
+                      currentPage === i + 1 ? "bg-[#C62828] text-white" : ""
                     }`}
                   >
                     {i + 1}

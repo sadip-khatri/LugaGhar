@@ -55,13 +55,15 @@ const PrivacyAndPolicy: React.FC = () => {
         <ul className="list-disc list-inside mb-4">
           <li>
             (A) Your account registration information (for example, full name,
-            email address (246Impex@gmail.com), password and profile picture) or information derived
-            from your Gmail or Facebook account (for example, full name, email
-            address (246Impex@gmail.com) and profile picture);
+            email address (LugaGhar@gmail.com), password and profile picture) or
+            information derived from your Gmail or Facebook account (for
+            example, full name, email address (LugaGhar@gmail.com) and profile
+            picture);
           </li>
           <li>
             (B) Profile information (such as your full name, profile picture,
-            date of birth, billing/shipping address (Tamrakar Complex, New Road) and mobile number (9869946896));
+            date of birth, billing/shipping address (Tamrakar Complex, New Road)
+            and mobile number (9869946896));
           </li>
           <li>
             (C) Information relating to your dealings, or enquiries you have

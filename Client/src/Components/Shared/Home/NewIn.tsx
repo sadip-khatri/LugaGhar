@@ -90,18 +90,18 @@ const NewIn: React.FC<NewInProps> = ({
   };
 
   return (
-    <section className="relative px-4 md:px-16 py-10 bg-white">
+    <section className="relative px-4 md:px-16 py-10 bg-[var(--color-bg)]">
       {/* Arrow Buttons */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 z-10 shadow-md hover:bg-gray-100 cursor-pointer"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[var(--color-bg)] border border-[var(--color-secondary)] rounded-full p-2 z-10 shadow-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] cursor-pointer"
       >
         <FaChevronLeft />
       </button>
 
       <button
         onClick={() => scroll("right")}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 z-10 shadow-md hover:bg-gray-100 cursor-pointer"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[var(--color-bg)] border border-[var(--color-secondary)] rounded-full p-2 z-10 shadow-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] cursor-pointer"
       >
         <FaChevronRight />
       </button>
@@ -114,10 +114,10 @@ const NewIn: React.FC<NewInProps> = ({
         <div className="flex items-start w-max gap-4">
           {/* Intro Text Box */}
           <div className="min-w-[200px] shrink-0">
-            <h2 className="text-2xl font-bold mt-1">{heading}</h2>
-            <p className="text-sm text-gray-500 mt-2">{description}</p>
+            <h2 className="text-2xl font-bold mt-1 text-[var(--color-text)]">{heading}</h2>
+            <p className="text-sm text-[var(--color-secondary)] mt-2">{description}</p>
             <Link to="new-arrival">
-              <button className="mt-4 px-5 py-2 border cursor-pointer border-[#2563eb] text-sm rounded-full hover:bg-[#2563eb] hover:text-white transition">
+              <button className="mt-4 px-5 py-2 border cursor-pointer border-[var(--color-secondary)] text-[var(--color-secondary)] text-sm rounded-full hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] transition">
                 Shop Now →
               </button>
             </Link>
