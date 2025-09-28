@@ -17,7 +17,7 @@ const itemsPerPage = 6;
 
 const MensCollections: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
+  // const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [sortOption, setSortOption] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,11 +50,6 @@ const MensCollections: React.FC = () => {
     fetchProducts();
   }, []);
 
-  const handleStockChange = (status: "all" | "in" | "out") => {
-    setStockFilter(status);
-    setCurrentPage(1);
-  };
-
   const handleCategoryChange = (cat: string) => {
     setSelectedCategory(cat);
     setCurrentPage(1);
@@ -65,12 +60,6 @@ const MensCollections: React.FC = () => {
 
     if (selectedCategory !== "all") {
       filtered = filtered.filter((p) => p.category === selectedCategory);
-    }
-
-    if (stockFilter === "in") {
-      filtered = filtered.filter((p) => p.stock > 0);
-    } else if (stockFilter === "out") {
-      filtered = filtered.filter((p) => p.stock === 0);
     }
 
     filtered = filtered.filter(
@@ -84,7 +73,7 @@ const MensCollections: React.FC = () => {
     }
 
     return filtered;
-  }, [products, selectedCategory, stockFilter, priceRange, sortOption]);
+  }, [products, selectedCategory, priceRange, sortOption]);
 
   const totalPages = Math.ceil(sortedAndFiltered.length / itemsPerPage);
   const displayedProducts = sortedAndFiltered.slice(
@@ -193,31 +182,6 @@ const MensCollections: React.FC = () => {
           </div>
 
           {/* Stock Filter */}
-          <div>
-            <h3 className="text-sm font-medium mb-2">AVAILABILITY</h3>
-            <div className="space-y-1 text-sm text-gray-600">
-              {["all", "in", "out"].map((status) => (
-                <label
-                  key={status}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <input
-                    type="radio"
-                    name="stock"
-                    value={status}
-                    className="accent-[#C62828]"
-                    checked={stockFilter === status}
-                    onChange={() => handleStockChange(status as any)}
-                  />
-                  {status === "all"
-                    ? "All"
-                    : status === "in"
-                    ? "In Stock"
-                    : "Out of Stock"}
-                </label>
-              ))}
-            </div>
-          </div>
         </aside>
 
         {/* Main Content */}

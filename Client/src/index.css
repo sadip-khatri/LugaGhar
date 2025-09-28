@@ -10,12 +10,13 @@
 } */
 /* Color Theme Variables */
 :root {
-  --color-bg: #FFFFFF;
-  --color-text: #1F1F1F;
-  --color-accent: #C62828;
-  --color-cta: #D4AF37;
-  --color-secondary: #2C3E50;
+  --color-bg: #FAF9F6;       /* Soft beige background */
+  --color-text: #1F1F1F;     /* Dark text for readability */
+  --color-accent: #C62828;   /* Bold red for highlights */
+  --color-cta: #D4AF37;      /* Luxurious gold */
+  --color-secondary: #2C3E50;/* Deep navy-gray */
 }
+
 
 @keyframes scroll-left {
   0% {

@@ -15,10 +15,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, title, price }) => {
   const convertedPrice = price * selectedCountry.rate;
 
   return (
-    <div className="bg-white border p-3 shadow-sm">
+    <div className="bg-[var(--color-bg)] border border-[var(--color-secondary)]/20 p-3 shadow-sm">
       <img src={image} alt={title} className="w-full h-72 object-cover" />
-      <h3 className="text-sm text-gray-600 mt-2">{title}</h3>
-      <p className="font-semibold mt-1">
+      <h3 className="text-sm text-[var(--color-secondary)] mt-2">{title}</h3>
+      <p className="font-semibold mt-1 text-[var(--color-text)]">
         {formatPrice(convertedPrice, selectedCountry.currency)}
       </p>
     </div>

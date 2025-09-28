@@ -13,7 +13,7 @@ const ProductGallery = ({ product }: { product: Product }) => {
             key={idx}
             src={thumb}
             alt={`Thumb ${idx + 1}`}
-            className="w-16 h-16 object-cover cursor-pointer border border-gray-200"
+            className="w-16 h-16 object-cover cursor-pointer border border-[var(--color-secondary)]/30"
             onClick={() => setSelectedImage(thumb)}
           />
         ))}

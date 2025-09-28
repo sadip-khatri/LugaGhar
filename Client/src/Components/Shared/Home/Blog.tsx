@@ -31,9 +31,9 @@ const Blog = () => {
           <p className="max-w-xl text-[var(--color-secondary)]">
             At LugaGhar, our blog is crafted to bring you the latest in fashion,
             style tips, and collection showcases. Whether you're looking for
-            outfit inspiration or care guides for your favorite fabrics,
-            our content is designed to empower your everyday style decisions.
-            Stay connected. Stay stylish.
+            outfit inspiration or care guides for your favorite fabrics, our
+            content is designed to empower your everyday style decisions. Stay
+            connected. Stay stylish.
           </p>
         </div>
         <ViewAllLink href="blog" />
@@ -75,7 +75,9 @@ const Blog = () => {
                   className="w-full h-[180px] object-cover"
                 />
                 <div className="p-3 flex flex-col justify-between h-[170px]">
-                  <p className="text-sm text-[var(--color-secondary)] pb-2">{blog.author}</p>
+                  <p className="text-sm text-[var(--color-secondary)] pb-2">
+                    {blog.author}
+                  </p>
                   <h4 className="text-xs font-semibold uppercase tracking-wider pb-2 line-clamp-2">
                     {blog.title}
                   </h4>

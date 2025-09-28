@@ -26,22 +26,22 @@ const AdBanner = () => {
         {/* Right: Tech Product Display */}
         <div className="flex justify-center md:justify-end items-center gap-4 flex-wrap">
           <img
-            src="/assets/img/Home/laptop-ad.png"
+            src="/grey-tweed-blazer2.png"
             alt="Blazers"
             className="w-28 h-auto"
           />
           <img
-            src="/assets/img/Home/phone-ad.png"
+            src="/black-sleeveless-bodycon.png"
             alt="Bodycon"
             className="w-20 h-auto"
           />
           <img
-            src="/assets/img/Home/watch-ad.png"
+            src="/rose-gold-layered-necklace2.png"
             alt="Necklace"
             className="w-16 h-auto"
           />
           <img
-            src="/assets/img/Home/headphone-ad.png"
+            src="/navy-blue-sport-cap2.png"
             alt="Caps"
             className="w-24 h-auto"
           />

@@ -82,7 +82,7 @@
     "price": 5299,
     "size": ["M", "L", "XL"],
     "color": "#1a3d7c",
-    "mainImage": "/blue-checkred-blazer.jpg",
+    "mainImage": "/blue-checkered-blazer.jpg",
     "thumbnails": ["/images/mens/mblazer2_thumb1.jpg", "/images/mens/mblazer2_thumb2.jpg"],
     "category": "M-Blazers",
     "stock": 12
@@ -115,7 +115,7 @@
     "price": 2499,
     "size": ["S", "M", "L"],
     "color": "#000000",
-    "mainImage": "/black-sleeveless-bodycon.jpg",
+    "mainImage": "/black-sleeveless-bodycon2.png",
     "thumbnails": ["/images/womens/bodycon1_thumb1.jpg", "/images/womens/bodycon1_thumb2.jpg"],
     "category": "Bodycon",
     "stock": 20
@@ -627,6 +627,17 @@
     "thumbnails": ["/images/gloves/glove10_thumb1.jpg", "/images/gloves/glove10_thumb2.jpg"],
     "category": "Gloves",
     "stock": 30
+  },
+  {
+    "id": 58,
+    "title": " Backless Bodycon Sleeveless Open Back Maxi Dress ",
+    "price": 5535,
+    "size": ["S", "M", "L"],
+    "color": "#000000",
+    "mainImage": "/backless-bodycon.jpg",
+    "thumbnails": ["/images/womens/bodycon1_thumb1.jpg", "/images/womens/bodycon1_thumb2.jpg"],
+    "category": "Bodycon",
+    "stock": 20
   }
 ]
 

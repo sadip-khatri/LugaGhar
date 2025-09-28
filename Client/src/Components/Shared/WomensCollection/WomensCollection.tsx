@@ -16,7 +16,7 @@ const itemsPerPage = 6;
 
 const WomensCollection: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
+  // const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [sortOption, setSortOption] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,11 +57,6 @@ const WomensCollection: React.FC = () => {
     fetchProducts();
   }, []);
 
-  const handleStockChange = (status: "all" | "in" | "out") => {
-    setStockFilter(status);
-    setCurrentPage(1);
-  };
-
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
@@ -69,13 +64,6 @@ const WomensCollection: React.FC = () => {
 
   const sortedAndFiltered = useMemo(() => {
     let filtered = products;
-
-    if (stockFilter === "in") {
-      filtered = filtered.filter((p) => (p.stock ?? 0) > 0);
-    } else if (stockFilter === "out") {
-      filtered = filtered.filter((p) => (p.stock ?? 0) === 0);
-    }
-
     filtered = filtered.filter(
       (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
     );
@@ -91,7 +79,7 @@ const WomensCollection: React.FC = () => {
     }
 
     return filtered;
-  }, [products, stockFilter, priceRange, sortOption, selectedCategory]);
+  }, [products, priceRange, sortOption, selectedCategory]);
 
   const totalPages = Math.ceil(sortedAndFiltered.length / itemsPerPage);
   const displayedProducts = sortedAndFiltered.slice(
@@ -182,31 +170,6 @@ const WomensCollection: React.FC = () => {
               </div>
 
               {/* Stock Filter */}
-              <div>
-                <h3 className="text-sm font-medium mb-2">AVAILABILITY</h3>
-                <div className="space-y-1 text-sm text-gray-600">
-                  {["all", "in", "out"].map((status) => (
-                    <label
-                      key={status}
-                      className="flex items-center gap-2 cursor-pointer"
-                    >
-                      <input
-                        type="radio"
-                        name="stock"
-                        className="accent-[#C62828]"
-                        value={status}
-                        checked={stockFilter === status}
-                        onChange={() => handleStockChange(status as any)}
-                      />
-                      {status === "all"
-                        ? "All"
-                        : status === "in"
-                        ? "In Stock"
-                        : "Out of Stock"}
-                    </label>
-                  ))}
-                </div>
-              </div>
             </div>
           </aside>
 

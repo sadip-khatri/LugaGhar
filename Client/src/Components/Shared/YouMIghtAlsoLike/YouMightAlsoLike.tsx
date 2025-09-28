@@ -63,19 +63,19 @@ const YouMightAlsoLike: React.FC = () => {
   };
 
   return (
-    <section className="px-4 md:px-16 py-12 bg-white">
+    <section className="px-4 md:px-16 py-12 bg-[var(--color-bg)]">
       {/* Header */}
       <div className="flex justify-between items-start mb-6">
         <div>
-          <h2 className="text-2xl font-bold">YOU MIGHT ALSO LIKE</h2>
-          <p className="text-sm text-gray-600 mt-2 max-w-xl">
+          <h2 className="text-2xl font-bold text-[var(--color-text)]">YOU MIGHT ALSO LIKE</h2>
+          <p className="text-sm text-[var(--color-secondary)] mt-2 max-w-xl">
             Rooted in the concept of minimalism & re-usability, the bag is a
             classic silhouette that represents a bag that can do it all.
             Comfortable & convenient, the bag is an essential.
           </p>
         </div>
         <Link to="/shop">
-          <button className="text-sm border-b border-black hover:opacity-75">
+          <button className="text-sm border-b border-[var(--color-accent)] hover:border-[var(--color-cta)] transition-colors text-[var(--color-accent)] hover:text-[var(--color-cta)]">
             SHOP NOW →
           </button>
         </Link>
@@ -86,14 +86,14 @@ const YouMightAlsoLike: React.FC = () => {
         {/* Arrows */}
         <button
           onClick={() => scroll("left")}
-          className="absolute -left-12 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 z-10 shadow-md hover:bg-gray-100 cursor-pointer"
+          className="absolute -left-12 top-1/2 transform -translate-y-1/2 bg-[var(--color-bg)] border border-[var(--color-secondary)]/30 rounded-full p-2 z-10 shadow-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] cursor-pointer transition-colors"
         >
           <FaChevronLeft />
         </button>
 
         <button
           onClick={() => scroll("right")}
-          className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 z-10 shadow-md hover:bg-gray-100 cursor-pointer"
+          className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-[var(--color-bg)] border border-[var(--color-secondary)]/30 rounded-full p-2 z-10 shadow-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] cursor-pointer transition-colors"
         >
           <FaChevronRight />
         </button>
@@ -106,7 +106,7 @@ const YouMightAlsoLike: React.FC = () => {
             return (
               <div
                 key={item.id}
-                className="min-w-[220px] bg-[#f7f2ec] rounded-md overflow-hidden shadow-sm shrink-0"
+                className="min-w-[220px] bg-[var(--color-bg)] rounded-md overflow-hidden shadow-sm shrink-0 border border-[var(--color-secondary)]/20"
               >
                 <img
                   src={item.image}
@@ -114,8 +114,8 @@ const YouMightAlsoLike: React.FC = () => {
                   className="w-full h-[250px] object-cover"
                 />
                 <div className="p-3">
-                  <p className="text-sm text-gray-800">{item.title}</p>
-                  <p className="font-semibold mt-1">
+                  <p className="text-sm text-[var(--color-text)]">{item.title}</p>
+                  <p className="font-semibold mt-1 text-[var(--color-secondary)]">
                     {formatPrice(convertedPrice, selectedCountry.currency)}
                   </p>
                 </div>

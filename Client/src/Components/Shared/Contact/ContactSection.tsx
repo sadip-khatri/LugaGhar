@@ -8,8 +8,8 @@ import {
 
 const ContactSection = () => {
   return (
-    <div className="max-w-6xl mx-auto p-6 py-15 text-[#3a2c1e] ">
-      <h2 className="text-3xl font-semibold mb-8 border-b-2 border-brown-400 inline-block">
+    <div className="max-w-6xl mx-auto p-6 py-15 text-[var(--color-text)] ">
+      <h2 className="text-3xl font-semibold mb-8 border-b-2 border-[var(--color-accent)] inline-block">
         Contact Information
       </h2>
 
@@ -20,15 +20,18 @@ const ContactSection = () => {
           <div className="mb-8">
             <h3 className="text-xl font-medium mb-2">Head Office</h3>
             <div className="flex items-start gap-2 mb-1">
-              <FaMapMarkerAlt className="mt-1 text-brown-700" />
+              <FaMapMarkerAlt className="mt-1 text-[var(--color-accent)]" />
               <p>
-                Tamrakar Complex, <br />
-                New Road
+                LugaGhar, <br />
+                Gongabu
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <FaEnvelope className="text-brown-700" />
-              <a href="mailto:LugaGhar@gmail.com" className="hover:underline">
+              <FaEnvelope className="text-[var(--color-accent)]" />
+              <a
+                href="mailto:LugaGhar@gmail.com"
+                className="hover:underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"
+              >
                 LugaGhar@gmail.com
               </a>
             </div>
@@ -38,8 +41,8 @@ const ContactSection = () => {
           <div className="mb-8">
             <h3 className="text-xl font-medium mb-2">Business Hours</h3>
             <div className="flex items-center gap-2">
-              <FaClock className="text-brown-700" />
-              <p>Mon to Sat - 10.00am to 06.30pm</p>
+              <FaClock className="text-[var(--color-accent)]" />
+              <p>sun to Fri - 10.00am to 06.30pm</p>
             </div>
           </div>
         </div>
@@ -50,14 +53,20 @@ const ContactSection = () => {
           <div className="mb-8">
             <h3 className="text-xl font-medium mb-2">For Order Enquiries</h3>
             <div className="flex items-center gap-2 mb-1">
-              <FaPhoneAlt className="text-brown-700" />
-              <a href="tel:9869946896" className="hover:underline">
+              <FaPhoneAlt className="text-[var(--color-accent)]" />
+              <a
+                href="tel:9869946896"
+                className="hover:underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"
+              >
                 9869946896
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <FaEnvelope className="text-brown-700" />
-              <a href="mailto:LugaGhar@gmail.com" className="hover:underline">
+              <FaEnvelope className="text-[var(--color-accent)]" />
+              <a
+                href="mailto:LugaGhar@gmail.com"
+                className="hover:underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"
+              >
                 LugaGhar@gmail.com
               </a>
             </div>
@@ -67,14 +76,20 @@ const ContactSection = () => {
           <div>
             <h3 className="text-xl font-medium mb-2">For Bulk Enquiries</h3>
             <div className="flex items-center gap-2 mb-1">
-              <FaPhoneAlt className="text-brown-700" />
-              <a href="tel:9869946896" className="hover:underline">
+              <FaPhoneAlt className="text-[var(--color-accent)]" />
+              <a
+                href="tel:9869946896"
+                className="hover:underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"
+              >
                 9869946896
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <FaEnvelope className="text-brown-700" />
-              <a href="mailto:LugaGhar@gmail.com" className="hover:underline">
+              <FaEnvelope className="text-[var(--color-accent)]" />
+              <a
+                href="mailto:LugaGhar@gmail.com"
+                className="hover:underline text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"
+              >
                 LugaGhar@gmail.com
               </a>
             </div>

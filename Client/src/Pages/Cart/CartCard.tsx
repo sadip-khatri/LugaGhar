@@ -68,9 +68,9 @@ function CartCard() {
 
   if (!localStorage.getItem("authToken")) {
     return (
-      <div className="text-center p-10 text-gray-700">
+      <div className="text-center p-10 text-[var(--color-secondary)]">
         Please{" "}
-        <Link to="/login" className="text-blue-600 underline">
+        <Link to="/login" className="text-[var(--color-accent)] underline">
           log in
         </Link>{" "}
         to view your cart.
@@ -89,7 +89,7 @@ function CartCard() {
   return (
     <>
       {cartItems.length === 0 ? (
-        <div className="p-6 text-center text-gray-700 text-lg">
+        <div className="p-6 text-center text-[var(--color-secondary)] text-lg">
           Your cart is empty.
         </div>
       ) : (
@@ -99,7 +99,7 @@ function CartCard() {
            
             <div className="flex-1">
               <div className="bg-white rounded-lg shadow-sm">
-                <div className="hidden md:grid grid-cols-12 gap-4 p-4 border-b text-sm font-medium text-gray-600 uppercase">
+                <div className="hidden md:grid grid-cols-12 gap-4 p-4 border-b text-sm font-medium text-[var(--color-secondary)] uppercase">
                   <div className="col-span-6">Description</div>
                   <div className="col-span-2 text-center">Item Price</div>
                   <div className="col-span-2 text-center">Quantity</div>
@@ -112,7 +112,7 @@ function CartCard() {
                   >
                     <div className="flex flex-col md:grid md:grid-cols-12 md:gap-4 items-center">
                       <div className="md:col-span-6 flex items-center space-x-4 mb-4 md:mb-0">
-                        <div className="w-20 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                        <div className="w-20 h-24 bg-[var(--color-bg)] rounded-lg overflow-hidden flex-shrink-0 border border-[var(--color-secondary)]/20">
                           <img
                             src={item.product.mainImage}
                             alt={item.product.title}
@@ -120,15 +120,15 @@ function CartCard() {
                           />
                         </div>
                         <div>
-                          <h3 className="font-medium text-gray-900">
+                          <h3 className="font-medium text-[var(--color-text)]">
                             {item.product.title}
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-[var(--color-secondary)]">
                             Size: {item.product.size?.[0] || "Default"}
                           </p>
                           <button
                             onClick={() => removeItem(item.product._id)}
-                            className="text-sm text-red-600 hover:text-red-800 flex items-center mt-2"
+                            className="text-sm text-[var(--color-accent)] hover:text-[var(--color-cta)] flex items-center mt-2"
                           >
                             <Trash2 className="w-4 h-4 mr-1" />
                             Delete
@@ -137,7 +137,7 @@ function CartCard() {
                       </div>
 
                       <div className="md:col-span-2 text-center mb-2 md:mb-0">
-                        <span className="text-gray-900">
+                        <span className="text-[var(--color-text)]">
                           {formatPrice(
                             item.product.price * selectedCountry.rate,
                             selectedCountry.currency
@@ -151,16 +151,16 @@ function CartCard() {
                             onClick={() =>
                               updateQuantity(item.product._id, item.quantity - 1)
                             }
-                            className="w-8 h-8 border border-gray-300 rounded-md"
+                            className="w-8 h-8 border border-[var(--color-secondary)]/30 rounded-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] transition-colors"
                           >
                             -
                           </button>
-                          <span>{item.quantity}</span>
+                          <span className="text-[var(--color-text)]">{item.quantity}</span>
                           <button
                             onClick={() =>
                               updateQuantity(item.product._id, item.quantity + 1)
                             }
-                            className="w-8 h-8 border border-gray-300 rounded-md"
+                            className="w-8 h-8 border border-[var(--color-secondary)]/30 rounded-md hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] transition-colors"
                           >
                             +
                           </button>
@@ -168,7 +168,7 @@ function CartCard() {
                       </div>
 
                       <div className="md:col-span-2 text-center">
-                        <span className="text-gray-900">
+                        <span className="text-[var(--color-text)]">
                           {formatPrice(
                             item.product.price *
                               item.quantity *
@@ -185,25 +185,25 @@ function CartCard() {
 
             {/* Order Summary */}
             <div className="mt-10 lg:mt-0 lg:w-1/3">
-  <div className="bg-white rounded-xl shadow-md p-6 border">
-    <h2 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h2>
+  <div className="bg-[var(--color-bg)] rounded-xl shadow-md p-6 border border-[var(--color-secondary)]/20">
+    <h2 className="text-lg font-semibold text-[var(--color-text)] mb-4">Order Summary</h2>
     <div className="space-y-3 text-sm">
-      <div className="flex justify-between text-gray-700">
+      <div className="flex justify-between text-[var(--color-secondary)]">
         <span>Subtotal</span>
         <span>{formatPrice(subtotal * selectedCountry.rate, selectedCountry.currency)}</span>
       </div>
-      <div className="flex justify-between text-gray-700">
+      <div className="flex justify-between text-[var(--color-secondary)]">
         <span>Shipping</span>
         <span>{formatPrice(shipping * selectedCountry.rate, selectedCountry.currency)}</span>
       </div>
     </div>
-    <hr className="my-4" />
-    <div className="flex justify-between text-base font-bold text-gray-900">
+    <hr className="my-4 border-[var(--color-secondary)]/20" />
+    <div className="flex justify-between text-base font-bold text-[var(--color-text)]">
       <span>Total</span>
       <span>{formatPrice(total * selectedCountry.rate, selectedCountry.currency)}</span>
     </div>
     <button
-      className="w-full mt-6 bg-[#8B5D3B] hover:bg-[#754C29] text-white py-3 rounded-lg transition"
+      className="w-full mt-6 bg-[var(--color-accent)] hover:bg-[var(--color-cta)] text-[var(--color-bg)] py-3 rounded-lg transition-colors"
       onClick={() => {
         alert("Proceeding to checkout...");
         localStorage.removeItem("cartProducts");

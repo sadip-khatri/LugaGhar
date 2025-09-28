@@ -48,31 +48,18 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
 
   const { selectedCountry } = useCountry();
 
-  const baseURL = import.meta.env.VITE_API_BASE_URL;
-
+  // ✅ Simplified: use images directly (backend already returns full URLs)
   const productImages =
-    product.images?.map((img) =>
-      img.startsWith("http")
-        ? img
-        : `${baseURL}/uploads${img.startsWith("/") ? img : `/${img}`}`
-    ) ||
-    (product.image
-      ? [
-          `${baseURL}/uploads${
-            product.image.startsWith("/") ? product.image : `/${product.image}`
-          }`,
-        ]
+    product.images && product.images.length > 0
+      ? product.images
+      : product.image
+      ? [product.image]
       : product.mainImage
-      ? [
-          `${baseURL}/uploads${
-            product.mainImage.startsWith("/")
-              ? product.mainImage
-              : `/${product.mainImage}`
-          }`,
-        ]
-      : []);
+      ? [product.mainImage]
+      : [];
 
-  console.log(productImages);
+  console.log("Product:", product);
+  console.log("Resolved images:", productImages);
 
   const localPrice = product.price * selectedCountry.rate;
   const localOriginalPrice = product.originalPrice
@@ -91,8 +78,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="px-6 py-4 text-sm text-gray-500">
+    <div className="min-h-screen bg-[var(--color-bg)]">
+      <div className="px-6 py-4 text-sm text-[var(--color-secondary)]">
         Home / {product.category || "Products"}
       </div>
 
@@ -100,30 +87,29 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
         {/* Thumbnails */}
         {productImages.length > 1 && (
           <div className="flex lg:flex-col gap-2 order-2 lg:order-1">
-            {productImages.map((image, index) => {
-              console.log(image);
-              return (
-                <div
-                  key={index}
-                  className={`w-16 h-20 cursor-pointer border-2 ${
-                    selectedImage === index ? "border-black" : "border-gray-200"
-                  }`}
-                  onClick={() => setSelectedImage(index)}
-                >
-                  <img
-                    src={image}
-                    alt={`${product.title} ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              );
-            })}
+            {productImages.map((image, index) => (
+              <div
+                key={index}
+                className={`w-16 h-20 cursor-pointer border-2 ${
+                  selectedImage === index
+                    ? "border-[var(--color-accent)]"
+                    : "border-[var(--color-secondary)]/30"
+                }`}
+                onClick={() => setSelectedImage(index)}
+              >
+                <img
+                  src={image}
+                  alt={`${product.title} ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         )}
 
         {/* Main Image */}
         <div className="flex-1 order-1 lg:order-2">
-          <div className="relative bg-gray-100 aspect-[3/4] max-w-md mx-auto">
+          <div className="relative bg-[var(--color-bg)] aspect-[3/4] max-w-md mx-auto border border-[var(--color-secondary)]/20">
             {productImages.length > 0 ? (
               <img
                 src={productImages[selectedImage]}
@@ -131,12 +117,12 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-400">
+              <div className="w-full h-full flex items-center justify-center text-[var(--color-secondary)]">
                 No Image Available
               </div>
             )}
             {product.discount && (
-              <div className="absolute top-4 left-4 bg-[#C62828] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+              <div className="absolute top-4 left-4 bg-[var(--color-accent)] text-[var(--color-bg)] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                 {product.discount}%
               </div>
             )}
@@ -147,7 +133,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
         <div className="flex-1 space-y-6 order-3">
           <h1 className="text-2xl font-light tracking-wide">{product.title}</h1>
           {(product.category || product.subcategory) && (
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-[var(--color-secondary)]">
               {product.category && product.subcategory
                 ? `${product.category} • ${product.subcategory}`
                 : product.category || product.subcategory}
@@ -157,16 +143,16 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
           {/* Price */}
           <div className="space-y-1">
             <div className="flex items-baseline gap-2">
-              <span className="text-xl text-[#C62828]">
+              <span className="text-xl text-[var(--color-accent)]">
                 {formatPrice(localPrice, selectedCountry.currency)}
               </span>
               {localOriginalPrice && (
                 <>
-                  <span className="text-sm text-gray-500 line-through">
+                  <span className="text-sm text-[var(--color-secondary)] line-through">
                     {formatPrice(localOriginalPrice, selectedCountry.currency)}
                   </span>
                   {product.discount && (
-                    <span className="text-sm text-red-600">
+                    <span className="text-sm text-[var(--color-accent)]">
                       {product.discount}% off
                     </span>
                   )}
@@ -174,7 +160,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
               )}
             </div>
             {product.shipping && (
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-[var(--color-secondary)]">
                 Shipping {product.shipping}
               </div>
             )}
@@ -190,8 +176,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
                     key={color}
                     className={`w-6 h-6 rounded-full cursor-pointer border-2 ${
                       selectedColor === color
-                        ? "border-black"
-                        : "border-gray-300"
+                        ? "border-[var(--color-accent)]"
+                        : "border-[var(--color-secondary)]/30"
                     }`}
                     style={{ backgroundColor: color }}
                     onClick={() => setSelectedColor(color)}
@@ -199,11 +185,14 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
                   ></div>
                 ))}
               </div>
-              <div className="text-sm text-gray-600">{selectedColor}</div>
+              <div className="text-sm text-[var(--color-secondary)]">
+                {selectedColor}
+              </div>
             </div>
           )}
 
           {/* Sizes */}
+          {/* Uncomment if you need sizes */}
           {/* {product.size && product.size.length > 0 && (
             <div className="space-y-2">
               <span className="text-sm font-medium">SIZE</span>
@@ -224,7 +213,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
           {/* Add to Cart */}
           <button
             onClick={handleAddToCart}
-            className="w-full bg-[#C62828] text-white py-3 px-6 font-medium tracking-wide hover:bg-[#1d4ed8] transition-colors cursor-pointer"
+            className="w-full bg-[var(--color-accent)] text-[var(--color-bg)] py-3 px-6 font-medium tracking-wide hover:bg-[var(--color-cta)] transition-colors cursor-pointer"
           >
             ADD TO CART
           </button>
@@ -254,7 +243,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart }) => {
                   />
                 </button>
                 {expandedSections[key as keyof typeof expandedSections] && (
-                  <div className="mt-3 text-sm text-gray-600">
+                  <div className="mt-3 text-sm text-[var(--color-secondary)]">
                     Content for {label.toLowerCase()} section would go here.
                   </div>
                 )}

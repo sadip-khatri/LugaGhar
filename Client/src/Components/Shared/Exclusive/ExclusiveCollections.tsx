@@ -11,17 +11,14 @@ type Product = {
   title: string;
   price: number;
   category: string;
-  stock: number;
 };
 
 const itemsPerPage = 6;
-
 const exclusiveCategories = ["Bodycon", "M-Blazers", "Miniskirt", "Sari"];
 
 const ExclusiveCollections: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [sortOption, setSortOption] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,11 +27,7 @@ const ExclusiveCollections: React.FC = () => {
   const fetchProducts = async () => {
     try {
       const res = await api.get("/products");
-      const processed = res.data.map((p: any) => ({
-        ...p,
-        stock: p.stock ?? (Math.random() > 0.5 ? 0 : 10),
-      }));
-      setProducts(processed);
+      setProducts(res.data);
     } catch (err) {
       console.error("Failed to fetch products", err);
       setProducts([]);
@@ -49,10 +42,12 @@ const ExclusiveCollections: React.FC = () => {
 
   const sidebarCategories = ["All", ...exclusiveCategories];
 
+  // Reset page when filters change
   React.useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategory, stockFilter, priceRange, sortOption]);
+  }, [selectedCategory, priceRange, sortOption]);
 
+  // Filter products based on selected category and price range
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
       const matchesCategory =
@@ -62,38 +57,34 @@ const ExclusiveCollections: React.FC = () => {
 
       const matchesPrice = p.price >= priceRange[0] && p.price <= priceRange[1];
 
-      const matchesStock =
-        stockFilter === "all" ||
-        (stockFilter === "in" && p.stock > 0) ||
-        (stockFilter === "out" && p.stock === 0);
-
-      return matchesCategory && matchesPrice && matchesStock;
+      return matchesCategory && matchesPrice;
     });
-  }, [products, selectedCategory, stockFilter, priceRange]);
+  }, [products, selectedCategory, priceRange]);
 
+  // Sort products
   const sortedProducts = useMemo(() => {
     let sorted = [...filteredProducts];
-    if (sortOption === "low") {
-      sorted.sort((a, b) => a.price - b.price);
-    } else if (sortOption === "high") {
-      sorted.sort((a, b) => b.price - a.price);
-    }
+    if (sortOption === "low") sorted.sort((a, b) => a.price - b.price);
+    else if (sortOption === "high") sorted.sort((a, b) => b.price - a.price);
     return sorted;
   }, [filteredProducts, sortOption]);
 
+  // Pick the highest-priced product per category
   const uniqueCategoryProducts = useMemo(() => {
-    const seenCategories = new Set<string>();
-    const uniqueProducts: Product[] = [];
+    const categoryMap = new Map<string, Product>();
 
     for (const product of sortedProducts) {
-      if (!seenCategories.has(product.category)) {
-        uniqueProducts.push(product);
-        seenCategories.add(product.category);
+      if (!exclusiveCategories.includes(product.category)) continue;
+
+      if (
+        !categoryMap.has(product.category) ||
+        product.price > (categoryMap.get(product.category)?.price || 0)
+      ) {
+        categoryMap.set(product.category, product);
       }
-      if (seenCategories.size >= itemsPerPage) break;
     }
 
-    return uniqueProducts;
+    return Array.from(categoryMap.values());
   }, [sortedProducts]);
 
   const totalPages = Math.ceil(uniqueCategoryProducts.length / itemsPerPage);
@@ -108,6 +99,7 @@ const ExclusiveCollections: React.FC = () => {
         <div className="text-center text-gray-500">Loading...</div>
       ) : (
         <div className="flex flex-col md:flex-row gap-6">
+          {/* Sidebar */}
           <aside className="w-full md:w-1/5">
             <div className="space-y-6 sticky top-20">
               <h2 className="text-2xl font-bold mb-1">EXCLUSIVE COLLECTIONS</h2>
@@ -169,35 +161,10 @@ const ExclusiveCollections: React.FC = () => {
                   </div>
                 </div>
               </div>
-
-              <div>
-                <h3 className="text-sm font-medium mb-2">AVAILABILITY</h3>
-                <div className="space-y-1 text-sm text-gray-600">
-                  {["all", "in", "out"].map((status) => (
-                    <label
-                      key={status}
-                      className="flex items-center gap-2 cursor-pointer"
-                    >
-                      <input
-                        type="radio"
-                        name="stock"
-                        className="accent-[#C62828]"
-                        value={status}
-                        checked={stockFilter === status}
-                        onChange={() => setStockFilter(status as any)}
-                      />
-                      {status === "all"
-                        ? "All"
-                        : status === "in"
-                        ? "In Stock"
-                        : "Out of Stock"}
-                    </label>
-                  ))}
-                </div>
-              </div>
             </div>
           </aside>
 
+          {/* Products */}
           <div className="flex-1">
             <div className="flex justify-end py-4 mb-8">
               <select

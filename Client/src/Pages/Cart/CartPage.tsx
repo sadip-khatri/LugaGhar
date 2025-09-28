@@ -1,17 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import api from "../../Utils/api";
-
 import { Link } from "react-router-dom";
 import { Trash2 } from "lucide-react";
-import YouMightAlsoLike from "../../Components/Shared/YouMIghtAlsoLike/YouMightAlsoLike";
 import NewsLetter from "../../Components/Shared/Home/NewsLetter";
 import { useCountry } from "../../Contexts/CountryContext";
 import { formatPrice } from "../../Utils/formatPrice";
 
 interface CartItem {
-  _id: string;
+  _id: string; // Cart item id
   product: {
     _id: string;
     title: string;
@@ -27,6 +24,7 @@ export default function CartPage() {
   const [loading, setLoading] = useState(true);
   const { selectedCountry } = useCountry();
 
+  // Fetch cart from backend
   const fetchCart = async () => {
     try {
       const res = await api.get("/cart");
@@ -44,25 +42,38 @@ export default function CartPage() {
     fetchCart();
   }, []);
 
-  const updateQuantity = async (productId: string, quantity: number) => {
-    if (quantity <= 0) return removeItem(productId);
+  // Update quantity with optimistic UI
+  const updateQuantity = async (cartItemId: string, quantity: number) => {
+    if (quantity <= 0) return removeItem(cartItemId);
+
+    // Optimistic UI update
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item._id === cartItemId ? { ...item, quantity } : item
+      )
+    );
+
     try {
-      await api.patch(`/cart/${productId}`, { quantity });
-      fetchCart();
+      await api.patch(`/cart/${cartItemId}`, { quantity });
+      // No immediate fetch to avoid overwriting optimistic update
     } catch (err) {
-      console.error("Failed to update quantity");
+      console.error("Failed to update quantity", err);
+      // Revert UI if PATCH fails
+      fetchCart();
     }
   };
 
-  const removeItem = async (productId: string) => {
+  // Remove item
+  const removeItem = async (cartItemId: string) => {
     try {
-      await api.delete(`/cart/${productId}`);
-      fetchCart();
+      await api.delete(`/cart/${cartItemId}`);
+      setCartItems((prev) => prev.filter((item) => item._id !== cartItemId));
     } catch (err) {
-      console.error("Failed to remove item");
+      console.error("Failed to remove item", err);
     }
   };
 
+  // Checkout handler
   const handleCheckout = async () => {
     try {
       const formattedCartItems = cartItems.map((item) => ({
@@ -76,12 +87,10 @@ export default function CartPage() {
         cartItems: formattedCartItems,
       });
 
-      console.log(res.data);
-
       if (res.data.url) {
         window.location.href = res.data.url;
       } else {
-        alert("Checkout session failed. No URL returned.");
+        // alert("Checkout session failed. No URL returned.");
       }
     } catch (err) {
       console.error("Checkout error:", err);
@@ -89,10 +98,10 @@ export default function CartPage() {
     }
   };
 
+  // Calculate totals
   const subtotal = cartItems
     .filter((item) => item.product && typeof item.product.price === "number")
     .reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-
   const shipping = cartItems.length > 0 ? 4 : 0;
   const total = subtotal + shipping;
 
@@ -109,12 +118,10 @@ export default function CartPage() {
   }
 
   if (loading) return <div className="p-10 text-center">Loading cart...</div>;
-
-  if (!selectedCountry) {
+  if (!selectedCountry)
     return (
       <div className="p-10 text-center">Loading country information...</div>
     );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -144,11 +151,12 @@ export default function CartPage() {
                   <div className="col-span-2 text-center">Quantity</div>
                   <div className="col-span-2 text-center">Subtotal</div>
                 </div>
+
                 {cartItems.map((item) => {
                   if (!item.product) return null;
                   return (
                     <div
-                      key={item.product._id}
+                      key={item._id}
                       className="grid grid-cols-12 gap-4 p-6 border-b items-center"
                     >
                       <div className="col-span-6 flex items-center space-x-4">
@@ -163,11 +171,8 @@ export default function CartPage() {
                           <h3 className="font-medium text-gray-900">
                             {item.product.title}
                           </h3>
-                          {/* <p className="text-sm text-gray-600">
-                            Size: {item.product.size?.[0] || "Default"}
-                          </p> */}
                           <button
-                            onClick={() => removeItem(item.product._id)}
+                            onClick={() => removeItem(item._id)}
                             className="text-sm text-red-600 hover:text-red-800 flex items-center mt-2 cursor-pointer"
                           >
                             <Trash2 className="w-4 h-4 mr-1" />
@@ -185,14 +190,11 @@ export default function CartPage() {
                         </span>
                       </div>
 
-                      <div className="col-span-2 text-center ">
-                        <div className="flex items-center justify-center space-x-2 ">
+                      <div className="col-span-2 text-center">
+                        <div className="flex items-center justify-center space-x-2">
                           <button
                             onClick={() =>
-                              updateQuantity(
-                                item.product._id,
-                                item.quantity - 1
-                              )
+                              updateQuantity(item._id, item.quantity - 1)
                             }
                             className="w-8 h-8 border border-gray-300 rounded-md cursor-pointer"
                           >
@@ -201,10 +203,7 @@ export default function CartPage() {
                           <span>{item.quantity}</span>
                           <button
                             onClick={() =>
-                              updateQuantity(
-                                item.product._id,
-                                item.quantity + 1
-                              )
+                              updateQuantity(item._id, item.quantity + 1)
                             }
                             className="w-8 h-8 border border-gray-300 rounded-md cursor-pointer"
                           >
@@ -265,12 +264,14 @@ export default function CartPage() {
                     </span>
                   </div>
                 </div>
-                <button
-                  className="w-full bg-[#8B5D3B] hover:bg-[#754C29] text-white font-medium py-3 px-4 rounded-lg mt-6 transition-colors cursor-pointer"
-                  onClick={handleCheckout}
+                <Link
+                  to="/esewa"
+                  state={{ amount: total * selectedCountry.rate }}
                 >
-                  PROCEED TO CHECKOUT
-                </button>
+                  <button className="w-full bg-[#8B5D3B] hover:bg-[#754C29] text-white font-medium py-3 px-4 rounded-lg mt-6 transition-colors cursor-pointer">
+                    PROCEED TO CHECKOUT
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

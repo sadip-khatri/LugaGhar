@@ -15,19 +15,10 @@ type Product = {
   stock: number;
 };
 
-const categories = [
-  "mens-collection",
-  "womens-collection",
-  "exclusive",
-  "jewellery",
-  "caps",
-];
 const itemsPerPage = 6;
 
 const NewArrivals: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [stockFilter, setStockFilter] = useState<"all" | "in" | "out">("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [sortOption, setSortOption] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,14 +27,13 @@ const NewArrivals: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await api.get("/products?tag=new-arrival");
-
-        // ✅ Only take products with id <= 14
-        const filtered = res.data.filter((p: any) => p.id <= 64);
-
-        setProducts(filtered);
+        const res = await api.get("/products");
+        const newProducts = res.data.filter(
+          (p: Product) => p.category.toLowerCase() === "new"
+        );
+        setProducts(newProducts);
       } catch (error) {
-        console.error("Failed to fetch new arrival products", error);
+        console.error("Failed to fetch new products", error);
         setProducts([]);
       } finally {
         setLoading(false);
@@ -52,47 +42,19 @@ const NewArrivals: React.FC = () => {
     fetchProducts();
   }, []);
 
-  const handleCategoryChange = (category: string) => {
-    setCurrentPage(1);
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
-  };
-
-  const handleStockChange = (status: "all" | "in" | "out") => {
-    setStockFilter(status);
-    setCurrentPage(1);
-  };
-
   const sortedAndFiltered = useMemo(() => {
     let filtered = products;
-
-    if (selectedCategories.length > 0) {
-      filtered = filtered.filter((p) =>
-        selectedCategories.includes(p.category)
-      );
-    }
-
-    if (stockFilter === "in") {
-      filtered = filtered.filter((p) => p.stock > 0);
-    } else if (stockFilter === "out") {
-      filtered = filtered.filter((p) => p.stock === 0);
-    }
-
     filtered = filtered.filter(
       (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
     );
 
-    if (sortOption === "low") {
+    if (sortOption === "low")
       filtered = [...filtered].sort((a, b) => a.price - b.price);
-    } else if (sortOption === "high") {
+    else if (sortOption === "high")
       filtered = [...filtered].sort((a, b) => b.price - a.price);
-    }
 
     return filtered;
-  }, [products, selectedCategories, stockFilter, priceRange, sortOption]);
+  }, [products, priceRange, sortOption]);
 
   const totalPages = Math.ceil(sortedAndFiltered.length / itemsPerPage);
   const displayedProducts = sortedAndFiltered.slice(
@@ -104,38 +66,17 @@ const NewArrivals: React.FC = () => {
     <div className="px-4 md:px-16 py-10 bg-white">
       <div className="flex flex-col md:flex-row gap-6">
         {/* Sidebar */}
-        <aside className="w-full md:w-1/5 space-y-6 sticky top-20 self-start h-fit">
-          <h2 className="text-2xl font-bold mb-1">NEW ARRIVAL</h2>
+        <aside className="w-full md:w-1/5 sticky top-20 self-start space-y-6 p-4 bg-white rounded shadow">
+          <h2 className="text-2xl font-bold mb-1">NEW ARRIVALS</h2>
           <p className="text-sm text-gray-500 mb-6">
-            {loading ? "Loading..." : `${sortedAndFiltered.length} new items`}
+            {loading ? "Loading..." : `${sortedAndFiltered.length} items found`}
           </p>
 
-          {/* Categories */}
-          <div>
-            <h3 className="text-sm font-medium mb-2">CATEGORIES</h3>
-            <div className="space-y-1 text-sm text-gray-600">
-              {categories.map((cat) => (
-                <label
-                  key={cat}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedCategories.includes(cat)}
-                    onChange={() => handleCategoryChange(cat)}
-                    className="accent-[#C62828]"
-                  />
-                  {cat}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Price Filter */}
+          {/* Price Range */}
           <div>
             <h3 className="text-sm font-medium mb-3">PRICE RANGE</h3>
             <div className="space-y-2 text-sm text-gray-700">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between">
                 <span>Rs. {priceRange[0]}</span>
                 <span>Rs. {priceRange[1]}</span>
               </div>
@@ -153,12 +94,11 @@ const NewArrivals: React.FC = () => {
                       Math.max(+e.target.value, priceRange[0] + 100),
                     ])
                   }
-                  className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-black"
+                  className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-[#C62828]"
                 />
-
                 <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-gray-300 z-0" />
                 <div
-                  className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-black z-0"
+                  className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[#C62828] z-0"
                   style={{
                     left: `${(priceRange[0] / 10000) * 100}%`,
                     width: `${
@@ -167,33 +107,6 @@ const NewArrivals: React.FC = () => {
                   }}
                 />
               </div>
-            </div>
-          </div>
-
-          {/* Stock Filter */}
-          <div>
-            <h3 className="text-sm font-medium mb-2">AVAILABILITY</h3>
-            <div className="space-y-1 text-sm text-gray-600">
-              {["all", "in", "out"].map((status) => (
-                <label
-                  key={status}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <input
-                    type="radio"
-                    name="stock"
-                    value={status}
-                    checked={stockFilter === status}
-                    onChange={() => handleStockChange(status as any)}
-                    className="accent-[#C62828]"
-                  />
-                  {status === "all"
-                    ? "All"
-                    : status === "in"
-                    ? "In Stock"
-                    : "Out of Stock"}
-                </label>
-              ))}
             </div>
           </div>
         </aside>

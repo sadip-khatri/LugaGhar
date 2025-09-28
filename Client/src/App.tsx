@@ -38,6 +38,7 @@ import SiteMap from "./Pages/SiteMap/SiteMap";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import Women from "./Pages/WomensCollection/Women";
 import MensCollection from "./Pages/MensCollection/MensCollection";
+import Esewa from "./esewa/Esewa";
 
 // import Home from "./Pages/Home/Hero";
 
@@ -48,7 +49,7 @@ function App() {
         <Routes>
           {/* Wrap routes under Layout */}
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} /> {/* Or Home if you add it */}
+            <Route index element={<Home />} />
             <Route path="season-event" element={<SeasonEvent />} />
             <Route path="new-arrival" element={<NewArrival />} />
             <Route path="womens-collection" element={<Women />} />
@@ -76,6 +77,7 @@ function App() {
             <Route path="order-look-up" element={<OrderLookUp />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="site-map" element={<SiteMap />} />
+            <Route path="/esewa" element={<Esewa />} />
           </Route>
         </Routes>
       </Router>

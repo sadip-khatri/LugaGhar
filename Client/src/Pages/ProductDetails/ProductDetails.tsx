@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../Utils/api";
 import ProductInfo from "../../Components/Ui/ProductInfo";
-// import SimilarItems from "../../Components/Shared/SimilarItems/SimilarItems";
+// import SimilarItems from "../../Components/Shared/SimilarItems/SimilarItems";  
 import { toast } from "react-toastify";
 
 const ProductDetail = () => {
@@ -29,8 +29,8 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <p className="text-center mt-20">Loading product...</p>;
-  if (!product) return <p className="text-center mt-20">Product not found.</p>;
+    if (loading) return <p className="text-center mt-20">Loading product...</p>;
+    if (!product) return <p className="text-center mt-20">Product not found.</p>;
 
   const handleAddToCart = async (
     selectedProduct: any,

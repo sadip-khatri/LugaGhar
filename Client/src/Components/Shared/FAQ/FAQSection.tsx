@@ -121,10 +121,10 @@ const faqs = [
 
 const FAQSection: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10 text-[#5e3c1c]">
+    <div className="max-w-4xl mx-auto px-4 py-10 text-[var(--color-text)]">
       {faqs.map((section, idx) => (
         <div key={idx} className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 uppercase tracking-wide">
+          <h2 className="text-2xl font-semibold mb-4 uppercase tracking-wide text-[var(--color-accent)]">
             {section.title}
           </h2>
           <div>

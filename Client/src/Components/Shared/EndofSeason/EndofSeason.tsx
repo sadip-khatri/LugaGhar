@@ -94,19 +94,19 @@ const EndofSeason: React.FC = () => {
   );
 
   return (
-    <div className="px-4 md:px-16 py-10 bg-white">
+    <div className="px-4 md:px-16 py-10 bg-[var(--color-bg)]">
       <div className="flex flex-col md:flex-row gap-6">
         {/* Sidebar */}
         <aside className="w-full md:w-1/5 space-y-6 sticky top-20 self-start h-fit">
-          <h2 className="text-2xl font-bold mb-1">END OF SEASON</h2>
-          <p className="text-sm text-gray-500 mb-6">
+          <h2 className="text-2xl font-bold mb-1 text-[var(--color-text)]">END OF SEASON</h2>
+          <p className="text-sm text-[var(--color-secondary)] mb-6">
             {loading ? "Loading..." : `${sortedAndFiltered.length} new items`}
           </p>
 
           {/* Categories */}
           <div>
-            <h3 className="text-sm font-medium mb-2">CATEGORIES</h3>
-            <div className="space-y-1 text-sm text-gray-600">
+            <h3 className="text-sm font-medium mb-2 text-[var(--color-text)]">CATEGORIES</h3>
+            <div className="space-y-1 text-sm text-[var(--color-secondary)]">
               {categories.map((cat) => (
                 <label
                   key={cat}
@@ -125,8 +125,8 @@ const EndofSeason: React.FC = () => {
 
           {/* Price Range */}
           <div>
-            <h3 className="text-sm font-medium mb-3">PRICE RANGE</h3>
-            <div className="space-y-2 text-sm text-gray-700">
+            <h3 className="text-sm font-medium mb-3 text-[var(--color-text)]">PRICE RANGE</h3>
+            <div className="space-y-2 text-sm text-[var(--color-secondary)]">
               <div className="flex justify-between items-center">
                 <span>Rs. {priceRange[0]}</span>
                 <span>Rs. {priceRange[1]}</span>
@@ -162,9 +162,9 @@ const EndofSeason: React.FC = () => {
                   className="absolute z-20 w-full h-1 bg-transparent appearance-none pointer-events-auto accent-black"
                 />
 
-                <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-gray-300 z-0" />
+                <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-[var(--color-secondary)]/30 z-0" />
                 <div
-                  className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-black z-0"
+                  className="absolute top-1/2 transform -translate-y-1/2 h-[2px] bg-[var(--color-accent)] z-0"
                   style={{
                     left: `${(priceRange[0] / 10000) * 100}%`,
                     width: `${
@@ -178,8 +178,8 @@ const EndofSeason: React.FC = () => {
 
           {/* Stock Filter */}
           <div>
-            <h3 className="text-sm font-medium mb-2">AVAILABILITY</h3>
-            <div className="space-y-1 text-sm text-gray-600">
+            <h3 className="text-sm font-medium mb-2 text-[var(--color-text)]">AVAILABILITY</h3>
+            <div className="space-y-1 text-sm text-[var(--color-secondary)]">
               {["all", "in", "out"].map((status) => (
                 <label
                   key={status}
@@ -220,11 +220,11 @@ const EndofSeason: React.FC = () => {
 
           {/* Product Grid or Message */}
           {loading ? (
-            <div className="text-center text-gray-500 mt-10">
+            <div className="text-center text-[var(--color-secondary)] mt-10">
               Loading products...
             </div>
           ) : displayedProducts.length === 0 ? (
-            <div className="text-center text-gray-500 mt-10">
+            <div className="text-center text-[var(--color-secondary)] mt-10">
               No products found.
             </div>
           ) : (
@@ -254,8 +254,8 @@ const EndofSeason: React.FC = () => {
                   <button
                     key={i + 1}
                     onClick={() => setCurrentPage(i + 1)}
-                    className={`px-3 py-1 border text-sm rounded hover:bg-gray-100 ${
-                      currentPage === i + 1 ? "bg-[#C62828] text-white" : ""
+                    className={`px-3 py-1 border border-[var(--color-secondary)]/30 text-sm rounded hover:bg-[var(--color-secondary)] hover:text-[var(--color-bg)] transition-colors ${
+                      currentPage === i + 1 ? "bg-[var(--color-accent)] text-[var(--color-bg)]" : "text-[var(--color-text)]"
                     }`}
                   >
                     {i + 1}
